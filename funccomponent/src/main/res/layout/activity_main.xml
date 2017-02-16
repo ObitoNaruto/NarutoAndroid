@@ -16,5 +16,12 @@
             android:onClick="onClickKLog"
             android:text="KLog" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickCarshHandler"
+            android:text="CrashHandler" />
+
+
     </LinearLayout>
 </ScrollView>
