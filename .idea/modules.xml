@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NarutoAndroid.iml" filepath="$PROJECT_DIR$/NarutoAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseservice/baseservice.iml" filepath="$PROJECT_DIR$/baseservice/baseservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonservice/commonservice.iml" filepath="$PROJECT_DIR$/commonservice/commonservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/funccomponent/funccomponent.iml" filepath="$PROJECT_DIR$/funccomponent/funccomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" filepath="$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" />
+    </modules>
+  </component>
+</project>
