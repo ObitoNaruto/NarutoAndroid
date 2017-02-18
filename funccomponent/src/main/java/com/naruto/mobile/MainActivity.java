@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
 import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
+import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
 
 public class MainActivity extends Activity {
@@ -29,6 +30,11 @@ public class MainActivity extends Activity {
 
     public void onClickLogReportTest(View view){
         Intent intent = new Intent(this, LogReportTestActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickBinderPoolTest(View view){
+        Intent intent = new Intent(this, BinderPoolActivity.class);
         startActivity(intent);
     }
 
