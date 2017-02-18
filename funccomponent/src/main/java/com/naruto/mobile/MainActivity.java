@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
+import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
 
 public class MainActivity extends Activity {
@@ -23,6 +24,11 @@ public class MainActivity extends Activity {
 
     public void onClickCarshHandler(View view){
         Intent intent = new Intent(this, CrashHandlerTestActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickLogReportTest(View view){
+        Intent intent = new Intent(this, LogReportTestActivity.class);
         startActivity(intent);
     }
 

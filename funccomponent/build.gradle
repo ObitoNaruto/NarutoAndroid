@@ -25,6 +25,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    /**
+     *
+
+     HttpClient is not supported any more in sdk 23. You have to use URLConnection or downgrade to sdk 22 (compile 'com.android.support:appcompat-v7:22.2.0')
+
+     If you need sdk 23, add this to your gradle:
+
+     android {
+     useLibrary 'org.apache.http.legacy'
+     }
+
+     You also may try to download and include HttpClient jar directly into your project or use OkHttp instead
+
+     */
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -34,4 +50,11 @@ dependencies {
     //KLog
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'cz.msebera.android:httpclient:4.3.6'
+
+    //LogReport
+//    compile files('libs/httpclient-4.2.5.jar')
+    compile files('libs/activation.jar')
+    compile files('libs/mail.jar')
+    compile files('libs/additionnal.jar')
+
 }
