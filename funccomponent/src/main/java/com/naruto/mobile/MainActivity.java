@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.naruto.mobile.CountDownTimer.CountDownTimerTestActivity;
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
 import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
@@ -35,6 +36,11 @@ public class MainActivity extends Activity {
 
     public void onClickBinderPoolTest(View view){
         Intent intent = new Intent(this, BinderPoolActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickCountDownTimerTest(View view){
+        Intent intent = new Intent(this, CountDownTimerTestActivity.class);
         startActivity(intent);
     }
 
