@@ -13,14 +13,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickAdapterDelegate"
-            android:text="adapter_delegate_test" />
+            android:onClick="onClickSuccessToastTest"
+            android:text="success toast" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickWealthToastTest"
-            android:text="WealthToastTest" />
+            android:onClick="onClickFavoriteToastTest"
+            android:text="favorite toast" />
 
 
     </LinearLayout>

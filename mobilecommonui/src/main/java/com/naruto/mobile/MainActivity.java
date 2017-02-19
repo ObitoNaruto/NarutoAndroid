@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.naruto.mobile.adapterdelegate.sample.AdapterDelegateTestActivity;
+import com.naruto.mobile.toast.WealthToast.WealthToastTestActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickAdapterDelegate(View view){
         Intent intent = new Intent(this, AdapterDelegateTestActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickWealthToastTest(View view){
+        Intent intent = new Intent(this, WealthToastTestActivity.class);
         startActivity(intent);
     }
 }
