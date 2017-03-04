@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickBaseRecyclerViewAdapterHelper(View view){
+        Intent intent = new Intent(this, com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.HomeActivity.class);
+        startActivity(intent);
+    }
+
     public void onClickWealthToastTest(View view){
         Intent intent = new Intent(this, WealthToastTestActivity.class);
         startActivity(intent);

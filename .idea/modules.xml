@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/baseservice/baseservice.iml" filepath="$PROJECT_DIR$/baseservice/baseservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonservice/commonservice.iml" filepath="$PROJECT_DIR$/commonservice/commonservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/funccomponent/funccomponent.iml" filepath="$PROJECT_DIR$/funccomponent/funccomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" filepath="$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" filepath="$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" />
     </modules>
   </component>

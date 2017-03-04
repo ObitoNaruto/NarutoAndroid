@@ -12,6 +12,21 @@
         </activity>
         <activity android:name=".adapterdelegate.sample.AdapterDelegateTestActivity" />
         <activity android:name=".toast.WealthToast.WealthToastTestActivity"></activity>
+
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.PullToRefreshUseActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.HomeActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.AnimationUseActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.HeaderAndFooterUseActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.SectionUseActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.MultipleItemUseActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.EmptyViewUseActivity">
+        </activity>
     </application>
 
 </manifest>

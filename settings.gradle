@@ -1,1 +1,1 @@
-include ':app', ':commonservice', ':mobilecommonui', ':baseservice', ':funccomponent'
+include ':app', ':commonservice', ':mobilecommonui', ':baseservice', ':funccomponent', ':material-spinner-1.0.5'
