@@ -27,6 +27,10 @@
         </activity>
         <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.EmptyViewUseActivity">
         </activity>
+
+
+        <activity android:name=".pullrefresh.simple.PullRefreshActivity"></activity>
+        <activity android:name=".pullrefresh.simple.ShowActivity"></activity>
     </application>
 
 </manifest>

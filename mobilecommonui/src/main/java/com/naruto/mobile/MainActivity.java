@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.naruto.mobile.adapterdelegate.sample.AdapterDelegateTestActivity;
+import com.naruto.mobile.pullrefresh.simple.PullRefreshActivity;
 import com.naruto.mobile.toast.WealthToast.WealthToastTestActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickWealthToastTest(View view){
         Intent intent = new Intent(this, WealthToastTestActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickPullRefreshViewTest(View view){
+        Intent intent = new Intent(this, PullRefreshActivity.class);
         startActivity(intent);
     }
 }

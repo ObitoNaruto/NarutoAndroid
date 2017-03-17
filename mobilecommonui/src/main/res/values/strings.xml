@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">mobilecommonui</string>
+
+    <!-- pull refresh view -->
+    <!--<string name="app_name">android_my_pull_refresh</string>-->
+    <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
+    <string name="pull_to_refresh_pull_label" translatable="false">下拉刷新</string>
+    <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label" translatable="false">加载中&#8230;</string>
+    <string name="pull_to_refresh_update_time_label" translatable="false">上次更新时间</string>
+    <string name="pull_to_refresh_load_label" translatable="false">上拉加载更多</string>
+    <string name="load_mode_label" translatable="false">加载更多</string>
+    <!--<string name="app_name">android_my_pull_demo</string>-->
+    <string name="refresh_listview">listview下拉刷新</string>
+    <string name="refresh_gridview">GridView下拉刷新</string>
+    <string name="refresh_tv">TextView下拉刷新</string>
+    <string name="refresh_slide_lv">滑动删除下拉刷新</string>
+    <string name="swipe_layout">SwipeRefreshLayout下拉刷新</string>
+    <string name="delete">删除</string>
+    <string name="title_activity_show">ShowActivity</string>
 </resources>

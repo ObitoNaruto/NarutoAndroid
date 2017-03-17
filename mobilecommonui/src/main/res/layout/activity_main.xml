@@ -28,7 +28,11 @@
             android:onClick="onClickWealthToastTest"
             android:text="WealthToastTest" />
 
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickPullRefreshViewTest"
+            android:text="pullRefreshView" />
 
     </LinearLayout>
 </ScrollView>
