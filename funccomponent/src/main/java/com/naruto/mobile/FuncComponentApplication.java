@@ -1,15 +1,15 @@
 package com.naruto.mobile;
 
-import android.app.Application;
 
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandler;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.LogReport;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.save.imp.CrashWriter;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.upload.email.EmailReporter;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.upload.http.HttpReporter;
+import com.naruto.mobile.base.serviceaop.NarutoApplication;
 import com.naruto.mobile.log.KLog.KLog;
 
-public class FuncComponentApplication extends Application{
+public class FuncComponentApplication extends NarutoApplication{
     @Override
     public void onCreate() {
         super.onCreate();

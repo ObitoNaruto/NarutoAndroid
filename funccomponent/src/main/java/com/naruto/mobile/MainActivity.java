@@ -10,6 +10,7 @@ import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
 import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
+import com.naruto.mobile.serviceaoptestdemo.ServiceAopActivity;
 
 public class MainActivity extends Activity {
 
@@ -41,6 +42,11 @@ public class MainActivity extends Activity {
 
     public void onClickCountDownTimerTest(View view){
         Intent intent = new Intent(this, CountDownTimerTestActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickServiceAopTest(View view){
+        Intent intent = new Intent(this, ServiceAopActivity.class);
         startActivity(intent);
     }
 

@@ -23,7 +23,8 @@
         <service android:name=".LogReport.PowerLogReport.libray.upload.UploadService" />
 
         <activity android:name=".binderPool.BinderPoolActivity" />
-        <activity android:name=".CountDownTimer.CountDownTimerTestActivity"></activity>
+        <activity android:name=".CountDownTimer.CountDownTimerTestActivity" />
+        <activity android:name=".serviceaoptestdemo.ServiceAopActivity"></activity>
     </application>
 
 </manifest>
