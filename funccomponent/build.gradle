@@ -58,4 +58,5 @@ dependencies {
     compile files('libs/additionnal.jar')
 
     compile project(path: ':baseservice')
+    compile project(path: ':commonservice')
 }

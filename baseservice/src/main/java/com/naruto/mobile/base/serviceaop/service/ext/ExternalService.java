@@ -10,9 +10,16 @@ import com.naruto.mobile.base.serviceaop.service.MicroService;
  */
 public abstract class ExternalService extends MicroService {
 
+    private boolean mIsActivated = false;
+
+    public final boolean isActivated() {
+        return mIsActivated;
+    }
+
     @Override
     public void create(Bundle params) {
         onCreate(params);
+        mIsActivated = true;
     }
 
     @Override
@@ -20,5 +27,6 @@ public abstract class ExternalService extends MicroService {
         //当内存中移除当前服务
         getNarutoApplicationContext().onDestroyContent(this);
         onDestroy(params);
+        mIsActivated = false;
     }
 }

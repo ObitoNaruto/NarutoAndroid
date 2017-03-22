@@ -1,12 +1,31 @@
 package com.naruto.mobile.base.serviceaop;
 
 
+import android.app.Activity;
+
+import java.lang.ref.WeakReference;
+
 import com.naruto.mobile.base.serviceaop.service.ext.ExternalService;
 
 /**
  * Created by xinming.xxm on 2016/5/13.
  */
 public interface NarutoApplicationContext {
+
+    /**
+     * 返回栈顶的Activity
+     *
+     * @return 栈顶Activity
+     */
+    WeakReference<Activity> getTopActivity();
+
+    /**
+     * 更新当前Activity
+     *
+     * @param activity Activity
+     */
+    void updateActivity(Activity activity);
+
     /**
      * 依附android上下文
      * @param application

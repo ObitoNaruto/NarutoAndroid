@@ -12,6 +12,8 @@ public class BundleDao {
         //eg:注册了当前module，以后增加了依赖的话，都统一在这里配置
         Bundle bundle = new Bundle("demo", false, "com.naruto.mobile.base.serviceaop.demo");
         list.add(bundle);
+        Bundle commonserviceBundle = new Bundle("commonservice", false, "com.naruto.mobile.framework");
+        list.add(commonserviceBundle);
 
         return list;
     }

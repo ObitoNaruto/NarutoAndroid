@@ -1,6 +1,11 @@
 package com.naruto.mobile.base.serviceaop;
 
+import android.app.Activity;
+import android.util.ArrayMap;
 import android.util.Log;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
 import com.naruto.mobile.base.serviceaop.init.impl.BootLoaderImpl;
 import com.naruto.mobile.base.serviceaop.service.MicroService;
@@ -18,10 +23,55 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
      * android上下文
      */
     private NarutoApplication mApplication;
+
+    /**
+     * 当前Activity
+     */
+    private Activity mActiveActivity;
+
     /**
      * 服务管理
      */
     private ServiceManager mServiceManager;
+
+    @Override
+    public WeakReference<Activity> getTopActivity() {
+        try {
+            Class activityThreadClass = Class.forName("android.app.ActivityThread");
+            Object activityThread = activityThreadClass.getMethod("currentActivityThread")
+                    .invoke(null);
+            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
+            activitiesField.setAccessible(true);
+            ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
+            for (Object activityRecord : activities.values()) {
+                Class activityRecordClass = activityRecord.getClass();
+                Field pausedField = activityRecordClass.getDeclaredField("paused");
+                pausedField.setAccessible(true);
+                if (!pausedField.getBoolean(activityRecord)) {
+                    Field activityField = activityRecordClass.getDeclaredField("activity");
+                    activityField.setAccessible(true);
+                    mActiveActivity = (Activity) activityField.get(activityRecord);
+                    return new WeakReference<Activity>(mActiveActivity);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        throw new RuntimeException("Didn't find the running activity");
+
+    }
+
+    /**
+     * 更新激活的Activity
+     *
+     * @param activity
+     */
+    @Override
+    public void updateActivity(Activity activity) {
+        mActiveActivity = null;
+        mActiveActivity = activity;
+    }
+
 
     @Override
     public void attachContext(NarutoApplication application) {

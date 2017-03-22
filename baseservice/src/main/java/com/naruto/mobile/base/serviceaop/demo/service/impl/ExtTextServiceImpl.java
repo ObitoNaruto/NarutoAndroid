@@ -22,11 +22,6 @@ public class ExtTextServiceImpl extends ExtTextService {
     }
 
     @Override
-    public boolean isActivated() {
-        return false;
-    }
-
-    @Override
     public int add(int a, int b) {
         return a + b;
     }

@@ -24,7 +24,8 @@
 
         <activity android:name=".binderPool.BinderPoolActivity" />
         <activity android:name=".CountDownTimer.CountDownTimerTestActivity" />
-        <activity android:name=".serviceaoptestdemo.ServiceAopActivity"></activity>
+        <activity android:name=".serviceaoptestdemo.ServiceAopActivity" android:exported="true">
+        </activity>
     </application>
 
 </manifest>
