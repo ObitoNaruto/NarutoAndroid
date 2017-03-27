@@ -20,4 +20,6 @@
     <dimen name="sp_14">14sp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="lce_content_view_animation_translate_y">40dp</dimen>
 </resources>

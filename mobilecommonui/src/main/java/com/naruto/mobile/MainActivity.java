@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.naruto.mobile.adapterdelegate.sample.AdapterDelegateTestActivity;
+import com.naruto.mobile.mvpFramework.demo.MvpDemoMainActivity;
 import com.naruto.mobile.pullrefresh.simple.PullRefreshActivity;
 import com.naruto.mobile.toast.WealthToast.WealthToastTestActivity;
 
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickPullRefreshViewTest(View view){
         Intent intent = new Intent(this, PullRefreshActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickMvpDemoTest(View view){
+        Intent intent = new Intent(this, MvpDemoMainActivity.class);
         startActivity(intent);
     }
 }

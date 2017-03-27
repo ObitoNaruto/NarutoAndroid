@@ -18,4 +18,7 @@
     <string name="swipe_layout">SwipeRefreshLayout下拉刷新</string>
     <string name="delete">删除</string>
     <string name="title_activity_show">ShowActivity</string>
+
+    <string name="error_countries_retry">Error while loading countries. Click here to retry</string>
+    <string name="error_countries">Error while loading countries</string>
 </resources>

@@ -28,9 +28,32 @@
         <activity android:name="com.naruto.mobile.BaseRecyclerViewAdapterHelper.sample.EmptyViewUseActivity">
         </activity>
 
-
+        <!-- pullrefresh demo -->
         <activity android:name=".pullrefresh.simple.PullRefreshActivity"></activity>
         <activity android:name=".pullrefresh.simple.ShowActivity"></activity>
+
+        <!-- MVP demo activity-->
+        <activity android:name=".mvpFramework.demo.MvpDemoMainActivity"></activity>
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.FragmentContainerActivity"
+                  android:label="FragmentActivity"/>
+        <activity
+            android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.activity.CountriesActivity"
+            android:label="CountriesActivity">
+        </activity>
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.viewstate.NotRetainingCountriesActivity"
+                  android:label="NotRetainingCountriesActivity"
+        />
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.viewstate.RetainingCountriesActivity"
+                  android:label="RetainingCountriesActivity" />
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.customviewstate.MyCustomActivity"
+                  android:label="Custom ViewState Activity"/>
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.layout.CountriesLayoutActivity"
+                  android:label="MVP Framelayout"/>
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.viewstate.RetainingCountriesFragmentEmbededInXmlActivity"
+                  android:label="Embeded ViewState Fragment"
+        />
+        <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.viewpager.ViewPagerActivity"
+                  android:label="ViewPager" />
     </application>
 
 </manifest>
