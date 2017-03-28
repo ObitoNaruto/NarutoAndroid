@@ -22,16 +22,16 @@ public class ServiceManagerImpl implements ServiceManager {
     private NarutoApplicationContext mNarutoApplication;
 
     /**
-     * ·şÎñ
+     * æœåŠ¡
      */
-    private Map<String, Object> mServices;//¼°Ê±¼ÓÔØµÄ·şÎñmap
-    private Map<String, String> mLazyServices;//ÀÁ¼ÓÔØµÄ·şÎñmap
+    private Map<String, Object> mServices;//åŠæ—¶åŠ è½½çš„æœåŠ¡map
+    private Map<String, String> mLazyServices;//æ‡’åŠ è½½çš„æœåŠ¡map
 
     /**
-     * ³õÊ¼»¯·şÎñÈİÆ÷£¨ÄÚ´æ»º´æ£©
+     * åˆå§‹åŒ–æœåŠ¡å®¹å™¨ï¼ˆå†…å­˜ç¼“å­˜ï¼‰
      */
     public ServiceManagerImpl(){
-        //³õÊ¼»¯£¬Ïß³Ì°²È«
+        //åˆå§‹åŒ–ï¼Œçº¿ç¨‹å®‰å…¨
         mServices = new ConcurrentHashMap<String, Object>();
         mLazyServices = new ConcurrentHashMap<String, String>();
     }
@@ -47,7 +47,7 @@ public class ServiceManagerImpl implements ServiceManager {
             return null == mServices.put(className, service);
         } else if (service instanceof String) {
             return null == mLazyServices.put(className, (String)service);
-        } else { // Î´ÖªÀàĞÍ
+        } else { // æœªçŸ¥ç±»å‹
             return null == mServices.put(className, service);
         }
     }

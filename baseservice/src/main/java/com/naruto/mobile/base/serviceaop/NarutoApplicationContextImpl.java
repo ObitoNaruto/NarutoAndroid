@@ -20,17 +20,17 @@ import com.naruto.mobile.base.serviceaop.service.impl.ServiceManagerImpl;
  */
 public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     /**
-     * androidÉÏÏÂÎÄ
+     * androidä¸Šä¸‹æ–‡
      */
     private NarutoApplication mApplication;
 
     /**
-     * µ±Ç°Activity
+     * å½“å‰Activity
      */
     private Activity mActiveActivity;
 
     /**
-     * ·şÎñ¹ÜÀí
+     * æœåŠ¡ç®¡ç†
      */
     private ServiceManager mServiceManager;
 
@@ -62,7 +62,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     }
 
     /**
-     * ¸üĞÂ¼¤»îµÄActivity
+     * æ›´æ–°æ¿€æ´»çš„Activity
      *
      * @param activity
      */
@@ -85,13 +85,13 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     private void init(){
         mServiceManager = new ServiceManagerImpl();
-        mServiceManager.attachContext(this);//Îª·şÎñ¹ÜÀíÆ÷°ó¶¨ÏîÄ¿ÉÏÏÂÎÄ»·¾³
+        mServiceManager.attachContext(this);//ä¸ºæœåŠ¡ç®¡ç†å™¨ç»‘å®šé¡¹ç›®ä¸Šä¸‹æ–‡ç¯å¢ƒ
 
-        new BootLoaderImpl(NarutoApplicationContextImpl.this).load();//³õÊ¼»¯²¢½øĞĞ¼ÓÔØload
+        new BootLoaderImpl(NarutoApplicationContextImpl.this).load();//åˆå§‹åŒ–å¹¶è¿›è¡ŒåŠ è½½load
     }
 
     @Override
@@ -120,12 +120,12 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     @Override
     public <T extends ExternalService> T getExtServiceByInterface(String className) {
         if (null != mServiceManager) {
-            //ExternalServiceManagerÔÚApplicationÖĞ¾Í¼ÓÔØÁË£¬¾ßÌåÔÚBootLoaderImple
+            //ExternalServiceManageråœ¨Applicationä¸­å°±åŠ è½½äº†ï¼Œå…·ä½“åœ¨BootLoaderImple
             ExternalServiceManager exm = mServiceManager
                     .findServiceByInterface(ExternalServiceManager.class.getName());
             if (null != exm) {
                 Log.d("xxm", "NarutoApplicationContextImpl getExtServiceByInterface called! ExternalServiceManager:" + exm);
-                return (T) exm.getExternalService(className);//Íâ²¿À©Õ¹·şÎñ¹ÜÀíÆ÷È¥»ñµÃ·şÎñ
+                return (T) exm.getExternalService(className);//å¤–éƒ¨æ‰©å±•æœåŠ¡ç®¡ç†å™¨å»è·å¾—æœåŠ¡
             }
         }
         return null;
@@ -136,5 +136,9 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
         if (microContent instanceof MicroService) {
             mServiceManager.onDestroyService((MicroService) microContent);
         }
+    }
+
+    @Override
+    public void clearState() {
     }
 }

@@ -13,35 +13,35 @@ import com.naruto.mobile.base.serviceaop.service.ext.ExternalService;
 public interface NarutoApplicationContext {
 
     /**
-     * ·µ»ØÕ»¶¥µÄActivity
+     * è¿”å›æ ˆé¡¶çš„Activity
      *
-     * @return Õ»¶¥Activity
+     * @return æ ˆé¡¶Activity
      */
     WeakReference<Activity> getTopActivity();
 
     /**
-     * ¸üĞÂµ±Ç°Activity
+     * æ›´æ–°å½“å‰Activity
      *
      * @param activity Activity
      */
     void updateActivity(Activity activity);
 
     /**
-     * ÒÀ¸½androidÉÏÏÂÎÄ
+     * ä¾é™„androidä¸Šä¸‹æ–‡
      * @param application
      */
     void attachContext(NarutoApplication application);
 
     /**
-     * »ñÈ¡androidÉÏÏÂÎÄ
+     * è·å–androidä¸Šä¸‹æ–‡
      * @return
      */
     NarutoApplication getApplicationContext();
 
     /**
-     *×¢²á·şÎñ
-     * @param className ·şÎñ½Ó¿ÚÀàÃû
-     * @param service ·şÎñ
+     *æ³¨å†ŒæœåŠ¡
+     * @param className æœåŠ¡æ¥å£ç±»å
+     * @param service æœåŠ¡
      * @param <T>
      * @return
      */
@@ -50,15 +50,15 @@ public interface NarutoApplicationContext {
     <T> T unregisterService(String interfaceName);
 
     /**
-     * ²éÕÒ·şÎñ
-     * @param className ·şÎñ½Ó¿ÚÀàÃû
+     * æŸ¥æ‰¾æœåŠ¡
+     * @param className æœåŠ¡æ¥å£ç±»å
      * @param <T>
      * @return
      */
     <T> T findServiceByInterface(String className);
 
     /**
-     * Í¨¹ı·şÎñ½Ó¿Ú»ñÈ¡Íâ²¿·şÎñ
+     * é€šè¿‡æœåŠ¡æ¥å£è·å–å¤–éƒ¨æœåŠ¡
      * @param className
      * @param <T>
      * @return
@@ -66,8 +66,13 @@ public interface NarutoApplicationContext {
     <T extends ExternalService> T getExtServiceByInterface(String className);
 
     /**
-     * Ïú»Ù
+     * é”€æ¯
      * @param microContent
      */
     void onDestroyContent(MicroContent microContent);
+
+    /**
+     * æ¸…æ¥šçŠ¶æ€
+     */
+    void clearState();
 }

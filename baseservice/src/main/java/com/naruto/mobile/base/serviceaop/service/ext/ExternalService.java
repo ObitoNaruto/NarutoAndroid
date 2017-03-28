@@ -24,7 +24,7 @@ public abstract class ExternalService extends MicroService {
 
     @Override
     public void destroy(Bundle params) {
-        //当内存中移除当前服务
+        //褰撳唴瀛樹腑绉婚櫎褰撳墠鏈嶅姟
         getNarutoApplicationContext().onDestroyContent(this);
         onDestroy(params);
         mIsActivated = false;

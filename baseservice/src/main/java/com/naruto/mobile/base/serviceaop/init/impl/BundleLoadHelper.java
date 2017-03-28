@@ -27,7 +27,7 @@ public class BundleLoadHelper {
 
     public void loadBundleDefinitions() {
         try {
-            BundleDao bundleDao = new BundleDao();//ËùÓĞmoduleÔÚBundleDao³õÊ¼»¯Ê±×¢²á
+            BundleDao bundleDao = new BundleDao();//æ‰€æœ‰moduleåœ¨BundleDaoåˆå§‹åŒ–æ—¶æ³¨å†Œ
             List<Bundle> bundleList = bundleDao.getBundles();
             for (Bundle bundle : bundleList) {
                 loadBundle(bundle);
@@ -41,12 +41,12 @@ public class BundleLoadHelper {
             IllegalAccessException {
         BaseMetaInfo baseMetaInfo = null;
         try {
-            //ÕâÀïÊÇÎªÁË»ñÈ¡ÔÚmoduleÏÂµÄMetaInfoÎÄ¼şÀà£¬´ËÀàÖĞ×¢²áÁË·şÎñ
+            //è¿™é‡Œæ˜¯ä¸ºäº†è·å–åœ¨moduleä¸‹çš„MetaInfoæ–‡ä»¶ç±»ï¼Œæ­¤ç±»ä¸­æ³¨å†Œäº†æœåŠ¡
             String pkg = bundle.getPackageName();
             baseMetaInfo = (BaseMetaInfo) Class.forName(pkg + ".MetaInfo").newInstance();
             Log.d("xxm", "BundleLoadHelper loadBundle called!" + (pkg + ".MetaInfo"));
         } catch (Exception e) {
-            //´òÓ¡³ö´íĞÅÏ¢
+            //æ‰“å°å‡ºé”™ä¿¡æ¯
         }
 
         if (null == baseMetaInfo) {
@@ -60,7 +60,7 @@ public class BundleLoadHelper {
                 if (null == serviceDescription) {
                     continue;
                 }
-                mExternalServiceManager.registerExternalServiceOnly(serviceDescription);//Íâ²¿·şÎñ¹ÜÀíÆ÷,ÕâÀïÖ»×¢²á²»¼ÓÔØ
+                mExternalServiceManager.registerExternalServiceOnly(serviceDescription);//å¤–éƒ¨æœåŠ¡ç®¡ç†å™¨,è¿™é‡Œåªæ³¨å†Œä¸åŠ è½½
             }
         }
     }

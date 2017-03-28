@@ -2,23 +2,23 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/MicroContent.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/MicroDescription.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplication.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplicationContext.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplicationContextImpl.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/BootLoader.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/BootLoaderImpl.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/BundleLoadHelper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/CommonServiceLoadHelper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/MicroService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServiceDescription.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServiceManager.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServicesLoader.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalServiceManager.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalServiceManagerImpl.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/impl/CommonServiceLoadAgent.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/impl/ServiceManagerImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/MicroDescription.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplication.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplicationContext.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/NarutoApplicationContextImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/BootLoader.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/BootLoaderImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/BundleLoadHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/init/impl/CommonServiceLoadHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/MicroService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServiceDescription.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServiceManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ServicesLoader.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalServiceManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/ext/ExternalServiceManagerImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/impl/CommonServiceLoadAgent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseservice/src/main/java/com/naruto/mobile/base/serviceaop/service/impl/ServiceManagerImpl.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

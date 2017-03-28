@@ -8,12 +8,12 @@ import android.util.Log;
  */
 public class NarutoApplication extends Application {
     /**
-     * androidÉÏÏÂÎÄ
+     * androidä¸Šä¸‹æ–‡
      */
     private static NarutoApplication mInstance;
 
     /**
-     *ÏîÄ¿ÉÏÏÂÎÄ
+     *appä¸Šä¸‹æ–‡
      */
     private NarutoApplicationContext mNarutoApplicationContext;
 
@@ -21,11 +21,11 @@ public class NarutoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mInstance = this;//androidÉÏÏÂÎÄ³õÊ¼»¯
+        mInstance = this;//androidä¸Šä¸‹æ–‡åˆå§‹åŒ–
         try{
-            //NarutoApplicationContextImplÊÇNarutoApplicationContextµÄÊµÏÖÀà
+            //NarutoApplicationContextImpl??NarutoApplicationContext???????
             mNarutoApplicationContext = (NarutoApplicationContext) Class.forName("com.naruto.mobile.base.serviceaop.NarutoApplicationContextImpl").newInstance();
-            mNarutoApplicationContext.attachContext(this);//NarutoApplicationContext°ó¶¨androidÉÏÏÂÎÄ»·¾³£¬È»ºó½øĞĞ³õÊ¼»¯
+            mNarutoApplicationContext.attachContext(this);//NarutoApplicationContext
         }
         catch (Exception e){
             Log.e("xxm", "NarutoApplicationContextImpl newInstance failed!", e);
@@ -40,5 +40,11 @@ public class NarutoApplication extends Application {
 
     public static NarutoApplication getInstance(){
         return mInstance;
+    }
+
+    @Override
+    public void onTerminate() {
+        mNarutoApplicationContext.clearState();
+        super.onTerminate();
     }
 }

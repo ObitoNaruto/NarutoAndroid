@@ -32,7 +32,7 @@ public class CommonServiceLoadAgent implements ServicesLoader {
     public final void load() {
         preLoad();
 
-        //³õÊ¼»¯¸÷ÖÖ·şÎñ
+        //åˆå§‹åŒ–å„ç§æœåŠ¡
         registerService(InnerTxtService.class.getName(), new InnerTxtServiceImpl());
         //eg:
         //registerService(ExtTextService.class.getName(), new ExtTextServiceImpl());

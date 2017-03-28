@@ -8,26 +8,26 @@ import com.naruto.mobile.base.serviceaop.service.ServiceDescription;
  */
 public abstract class ExternalServiceManager extends CommonService {
     /**
-     * ×¢²áÀ©Õ¹·şÎñ
+     * æ³¨å†Œæ‰©å±•æœåŠ¡
      */
     public abstract void registerExtnernalService(ServiceDescription serviceDescription);
 
     /**
-     * »ñÈ¡À©Õ¹·şÎñ
-     * @param className ·şÎñ½Ó¿ÚÀà
+     * è·å–æ‰©å±•æœåŠ¡
+     * @param className æœåŠ¡æ¥å£ç±»
      * @return
      */
     public abstract ExternalService getExternalService(String className);
 
     /**
-     * ´´½¨ext·şÎñ
+     * åˆ›å»ºextæœåŠ¡
      * @param description
      * @return
      */
     public abstract boolean createExternalService(ServiceDescription description);
 
     /**
-     * ×¢²áext·şÎñ£¬Ö»register£¬²»´´½¨
+     * æ³¨å†ŒextæœåŠ¡ï¼Œåªregisterï¼Œä¸åˆ›å»º
      * @param description
      */
     public abstract void registerExternalServiceOnly(ServiceDescription description);

@@ -8,12 +8,12 @@ import com.naruto.mobile.base.serviceaop.MicroDescription;
  */
 public class ServiceDescription extends MicroDescription {
     /**
-     * 服务接口
+     * 鏈嶅姟鎺ュ彛
      */
     private String mInterfaceClassName;
 
     /**
-     * 是否延迟加载
+     * 鏄惁寤惰繜鍔犺浇
      *
      */
     private boolean isLazy = true;

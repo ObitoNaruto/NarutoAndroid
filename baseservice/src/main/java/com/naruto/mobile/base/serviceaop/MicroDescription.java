@@ -6,11 +6,11 @@ package com.naruto.mobile.base.serviceaop;
 public abstract class MicroDescription {
 
     /**
-     * Ãû×Ö
+     * åå­—
      */
     private String mName;
     /**
-     * ÀàÃû
+     * ç±»å
      */
     private String mClassName;
 

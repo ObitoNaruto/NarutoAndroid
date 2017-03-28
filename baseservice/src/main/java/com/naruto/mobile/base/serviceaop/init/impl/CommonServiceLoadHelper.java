@@ -6,7 +6,7 @@ import com.naruto.mobile.base.serviceaop.init.BootLoader;
 import com.naruto.mobile.base.serviceaop.service.ServicesLoader;
 
 /**
- * ·şÎñ¼ÓÔØ°ïÖúÀà
+ * æœåŠ¡åŠ è½½å¸®åŠ©ç±»
  * Created by xinming.xxm on 2016/5/13.
  */
 public class CommonServiceLoadHelper {
@@ -18,7 +18,7 @@ public class CommonServiceLoadHelper {
     }
 
     /**
-     * ³õÊ¼»¯¼ÓÔØ·şÎñ
+     * åˆå§‹åŒ–åŠ è½½æœåŠ¡
      */
     public void loadServices(){
         NarutoApplicationContext narutoApplicationContext = mBootLoader.getContext();
@@ -40,7 +40,7 @@ public class CommonServiceLoadHelper {
     }
 
     /**
-     * ³õÊ¼»¯»ù´¡·şÎñ
+     * åˆå§‹åŒ–åŸºç¡€æœåŠ¡
      * @param narutoApplication
      */
     private void initServices(NarutoApplication narutoApplication)

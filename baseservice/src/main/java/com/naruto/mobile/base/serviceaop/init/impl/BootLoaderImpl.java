@@ -37,9 +37,9 @@ public class BootLoaderImpl implements BootLoader {
 
     @Override
     public void load() {
-        Application application = mNarutoApplicaitonContext.getApplicationContext();//»ñÈ¡androidÉÏÏÂÎÄ
+        Application application = mNarutoApplicaitonContext.getApplicationContext();//è·å–androidä¸Šä¸‹æ–‡
 
-        //¶ÁÈ¡metaData
+        //è¯»å–metaData
         String agentCommonServiceLoad = null;
 //        String agentEntryPkgName = null;
 //        try {
@@ -53,12 +53,12 @@ public class BootLoaderImpl implements BootLoader {
             agentCommonServiceLoad = "com.naruto.mobile.base.serviceaop.service.impl.CommonServiceLoadAgent";
         }
 
-        //step1. Ê×ÏÈ³õÊ¼»¯Íâ²¿·şÎñ¹ÜÀí
+        //step1. é¦–å…ˆåˆå§‹åŒ–å¤–éƒ¨æœåŠ¡ç®¡ç†
         ExternalServiceManager externalServiceManager = new ExternalServiceManagerImpl();
-        externalServiceManager.attachContext(mNarutoApplicaitonContext);//°ó¶¨ÏîÄ¿ÉÏÏÂÎÄ
+        externalServiceManager.attachContext(mNarutoApplicaitonContext);//ç»‘å®šé¡¹ç›®ä¸Šä¸‹æ–‡
         mNarutoApplicaitonContext.registerService(ExternalServiceManager.class.getName(), externalServiceManager);
 
-        //step2. È»ºó³õÊ¼»¯¿ò¼ÜÖĞÌá¹©µÄËùÓĞ»ù´¡·şÎñ
+        //step2. ç„¶ååˆå§‹åŒ–æ¡†æ¶ä¸­æä¾›çš„æ‰€æœ‰åŸºç¡€æœåŠ¡
         try {
             Class<?> clazz = application.getClassLoader().loadClass(agentCommonServiceLoad);
             mServiceLoader = (ServicesLoader) clazz.newInstance();
@@ -68,7 +68,7 @@ public class BootLoaderImpl implements BootLoader {
         } catch (IllegalAccessException e) {
         }
 
-        if (Runtime.getRuntime().availableProcessors() > 2) {//ÏµÍ³ÊÇ¶à´¦ÀíÆ÷Ê±
+        if (Runtime.getRuntime().availableProcessors() > 2) {//ç³»ç»Ÿæ˜¯å¤šå¤„ç†å™¨æ—¶
 
             final HandlerThread loadServiceThread = new HandlerThread("name");
             loadServiceThread.start();
@@ -86,10 +86,10 @@ public class BootLoaderImpl implements BootLoader {
                 }
             });
 
-//            //³õÊ¼»¯¿ò¼ÜÖĞÌá¹©µÄËùÓĞ»ù´¡·şÎñ,Õâ¸ö¿ÉÒÔÆúÓÃÁË
+//            //åˆå§‹åŒ–æ¡†æ¶ä¸­æä¾›çš„æ‰€æœ‰åŸºç¡€æœåŠ¡,è¿™ä¸ªå¯ä»¥å¼ƒç”¨äº†
 //            new CommonServiceLoadHelper(this).loadServices();
 
-            new BundleLoadHelper(this).loadBundleDefinitions();//loadÆäËûbundle(Module)ÖĞµÄ·şÎñ
+            new BundleLoadHelper(this).loadBundleDefinitions();//loadå…¶ä»–bundle(Module)ä¸­çš„æœåŠ¡
         }
     }
 }

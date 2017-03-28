@@ -10,52 +10,52 @@ import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
  */
 public interface ServiceManager {
     /**
-     * ÒÀ¸½ÏîÄ¿ÉÏÏÂÎÄ
+     * ä¾é™„é¡¹ç›®ä¸Šä¸‹æ–‡
      * @param applicationContext
      */
     void attachContext(NarutoApplicationContext applicationContext);
 
     /**
-     * ×¢²á·şÎñ
-     * @param className ·şÎñ½Ó¿ÚÀà
-     * @param service ·şÎñ
+     * æ³¨å†ŒæœåŠ¡
+     * @param className æœåŠ¡æ¥å£ç±»
+     * @param service æœåŠ¡
      * @param <T>
      * @return
      */
     <T> boolean registerService(String className, T service);
 
     /**
-     *²éÕÒ·şÎñ
-     * @param className ·şÎñ½Ó¿ÚÀàÃû
+     *æŸ¥æ‰¾æœåŠ¡
+     * @param className æœåŠ¡æ¥å£ç±»å
      * @param <T>
      * @return
      */
     <T> T findServiceByInterface(String className);
 
     /**
-     * Ïú»Ù»Øµ÷
+     * é”€æ¯å›è°ƒ
      */
     void onDestroyService(MicroService microService);
 
     /**
-     * ÍË³ö
+     * é€€å‡º
      */
     void exit();
 
     /**
-     * ±£´æ×´Ì¬
+     * ä¿å­˜çŠ¶æ€
      * @param editor
      */
     void saveState(SharedPreferences.Editor editor);
 
     /**
-     * »Ö¸´×´Ì¬
+     * æ¢å¤çŠ¶æ€
      * @param preferences
      */
     void restoreState(SharedPreferences preferences);
 
     /**
-     * ×¢Ïú·şÎñ
+     * æ³¨é”€æœåŠ¡
      * @param interfaceName
      * @param <T>
      * @return

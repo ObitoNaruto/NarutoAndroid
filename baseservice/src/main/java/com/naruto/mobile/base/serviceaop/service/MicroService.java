@@ -16,38 +16,38 @@ public abstract class MicroService implements MicroContent {
     private NarutoApplicationContext narutoApplicationContext;
 
     /**
-     * ÊÇ·ñÒÑ¾­±»¼¤»î£¨onCreate()±»µ÷ÓÃ£¬onDestroy()»¹Ã»ÓĞ±»µ÷ÓÃ£©
+     * æ˜¯å¦å·²ç»è¢«æ¿€æ´»ï¼ˆonCreate()è¢«è°ƒç”¨ï¼ŒonDestroy()è¿˜æ²¡æœ‰è¢«è°ƒç”¨ï¼‰
      * @return
      */
     public abstract boolean isActivated();
 
     /**
-     * ´´½¨
+     * åˆ›å»º
      *
-     * @param params ²ÎÊı
+     * @param params å‚æ•°
      *
      */
     public abstract void create(Bundle params);
 
     /**
-     *Ïú»Ù
+     *é”€æ¯
      *
-     * @param params ²ÎÊı
+     * @param params å‚æ•°
      */
     public abstract void destroy(Bundle params);
 
 
     /**
-     * ´´½¨»Øµ÷
+     * åˆ›å»ºå›è°ƒ
      *
-     * @param params ²ÎÊı
+     * @param params å‚æ•°
      */
     protected abstract void onCreate(Bundle params);
 
     /**
-     * Ïú»Ù»Øµ÷
+     * é”€æ¯å›è°ƒ
      *
-     * @param params ²ÎÊı
+     * @param params å‚æ•°
      */
     protected abstract void onDestroy(Bundle params);
 

@@ -53,7 +53,7 @@ public class ExternalServiceManagerImpl extends ExternalServiceManager{
     public ExternalService getExternalService(String className) {
         ExternalService extService = createdExtServices.get(className);
         if(null == extService){
-            //Íâ²¿·şÎñ¶¼ÔÚMetaInfoÖĞ½øĞĞ×¢²áÁË,¾ßÌåÔÚBundleLoadHelperÖĞ½øĞĞµÄ¸÷¸ömoduleÖĞmetaInfoµÄ×¢²á
+            //å¤–éƒ¨æœåŠ¡éƒ½åœ¨MetaInfoä¸­è¿›è¡Œæ³¨å†Œäº†,å…·ä½“åœ¨BundleLoadHelperä¸­è¿›è¡Œçš„å„ä¸ªmoduleä¸­metaInfoçš„æ³¨å†Œ
             ServiceDescription description = regiestedExtServices.get(className);
             if(null == description){
                 return null;
@@ -150,7 +150,7 @@ public class ExternalServiceManagerImpl extends ExternalServiceManager{
             }
 
             for(String clazz:classNames){
-                getExternalService(clazz);//lazyµÄservice»Ö¸´µ½mapÖĞ
+                getExternalService(clazz);//lazyçš„serviceæ¢å¤åˆ°mapä¸­
             }
         }
 

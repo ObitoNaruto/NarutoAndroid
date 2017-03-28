@@ -9,12 +9,12 @@ import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
 public interface BootLoader {
 
     /**
-     * ╩Ях║иообнд
+     * Х▌╥Е▐√Д╦┼Д╦▀Ф√┤
      * @return
      */
     NarutoApplicationContext getContext();
     /**
-     * ╪сть
+     * Е┼═Х╫╫
      */
     void load();
 
