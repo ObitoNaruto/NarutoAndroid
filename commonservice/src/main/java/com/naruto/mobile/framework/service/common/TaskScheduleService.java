@@ -8,13 +8,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import com.naruto.mobile.base.serviceaop.service.CommonService;
+import com.naruto.mobile.framework.common.threadpool.OrderedExecutor;
 
 /**
  * 任务调度服务
  */
 public abstract class TaskScheduleService extends CommonService {
 
-    public static abstract class Transaction extends com.alipay.mobile.common.task.transaction.Transaction {
+    public static abstract class Transaction extends com.naruto.mobile.framework.common.threadpool.Transaction {
     }
 
     /**

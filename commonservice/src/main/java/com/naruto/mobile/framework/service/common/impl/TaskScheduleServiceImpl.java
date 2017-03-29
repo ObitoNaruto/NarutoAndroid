@@ -17,6 +17,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
+import com.naruto.mobile.framework.common.threadpool.AsyncTaskExecutor;
+import com.naruto.mobile.framework.common.threadpool.CommonThreadFactory;
+import com.naruto.mobile.framework.common.threadpool.LifoBlockingDeque;
+import com.naruto.mobile.framework.common.threadpool.OrderedExecutor;
+import com.naruto.mobile.framework.common.threadpool.ProcessCpuTracker;
+import com.naruto.mobile.framework.common.threadpool.ScheduledTaskPoolExecutor;
+import com.naruto.mobile.framework.common.threadpool.TaskPoolExecutor;
 import com.naruto.mobile.framework.service.common.TaskScheduleService;
 
 import org.json.JSONObject;
@@ -60,10 +67,10 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
                     try {
                         idleCheckTaskFuture.cancel(true);
                     } catch (Throwable t) {
-                        LoggerFactory.getTraceLogger().error(TAG, "cancel check idle", t);
+                        Log.e(TAG, "cancel check idle", t);
                     }
                 }
-                LoggerFactory.getTraceLogger().info(TAG, "executeIdleTasks() Reason: timeout");
+                Log.i(TAG, "executeIdleTasks() Reason: timeout");
                 executeIdleTasks();
             }
         }, IDLE_TIMEOUT /* 超时后无条件执行 */, TimeUnit.SECONDS);
@@ -203,7 +210,7 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
         try {
             initializePoolCfgs();
         } catch (Throwable t) {
-//            LoggerFactory.getTraceLogger().error(TAG, "initializeThreadPools", t);
+            Log.e(TAG, "initializeThreadPools", t);
         }
 
         ioPoolCfg = createIoPoolCfg(ioPoolCfg);
@@ -218,14 +225,16 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
     private void initializePoolCfgs() throws Exception {
         Application application = NarutoApplication.getInstance();
         if (application == null) {
-//            LoggerFactory.getTraceLogger().error(TAG, "initializePoolCfgs: application is NULL");
+            Log.e(TAG, "initializePoolCfgs: application is NULL");
             return;
         }
-        String poolConfigJson = SharedSwitchUtil.getSharedSwitch(
-                application, SharedSwitchUtil.THREAD_POOL_CONFIG);
-        if (TextUtils.isEmpty(poolConfigJson)) {
-            return;
-        }
+        //// TODO: 17-3-29 获取配置的各种级别的pool的配置值json字符串
+        String poolConfigJson = "";
+//        String poolConfigJson = SharedSwitchUtil.getSharedSwitch(
+//                application, SharedSwitchUtil.THREAD_POOL_CONFIG);
+//        if (TextUtils.isEmpty(poolConfigJson)) {
+//            return;
+//        }
 
         JSONObject poolConfigObject = new JSONObject(poolConfigJson);
         setValueFromJson(ioPoolCfg, poolConfigObject, "io");
@@ -248,7 +257,7 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
             poolCfg.pushed_workQueue = setValueFromJson(keyObject, "queueSize", poolCfg.pushed_workQueue);
             poolCfg.pushed_keepAlive = setValueFromJson(keyObject, "keepAlive", poolCfg.pushed_keepAlive);
         } catch (Throwable t) {
-//            LoggerFactory.getTraceLogger().error(TAG, "setValueFromJson: " + key, t);
+            Log.e(TAG, "setValueFromJson: " + key, t);
         }
     }
 
@@ -259,7 +268,7 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
         try {
             return jsonObject.getInt(key);
         } catch (Throwable t) {
-//            LoggerFactory.getTraceLogger().error(TAG, "setValueFromJson: " + key, t);
+            Log.e(TAG, "setValueFromJson: " + key, t);
             return defaultValue;
         }
     }
@@ -661,83 +670,83 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
         return addIdleTask(task, threadName, 0);
     }
 
-    // FIXME 提供几档权重的常量值（类似线程优先级常量），目前道深传10，军英传-10，其它传0。
-    @Override
-    public boolean addIdleTask(Runnable task, String threadName, int taskWeight) {
-        if (task == null) {
-            throw new IllegalArgumentException("The task is null!");
-        }
-        if (TextUtils.isEmpty(threadName)) {
-            throw new IllegalArgumentException("The thread name is none!");
-        }
-        if (idleCheckTaskFuture != null) { // 只有在三个PipeLine都执行完成之后才创建IdleCheckTask，此后再添加IdleTask不接受
-//            throw new IllegalArgumentException("new task won't be accepted after all Pipeline being executed!");
-        }
+//    // FIXME 提供几档权重的常量值（类似线程优先级常量），目前道深传10，军英传-10，其它传0。
+//    @Override
+//    public boolean addIdleTask(Runnable task, String threadName, int taskWeight) {
+//        if (task == null) {
+//            throw new IllegalArgumentException("The task is null!");
+//        }
+//        if (TextUtils.isEmpty(threadName)) {
+//            throw new IllegalArgumentException("The thread name is none!");
+//        }
+//        if (idleCheckTaskFuture != null) { // 只有在三个PipeLine都执行完成之后才创建IdleCheckTask，此后再添加IdleTask不接受
+////            throw new IllegalArgumentException("new task won't be accepted after all Pipeline being executed!");
+//        }
+//
+//        MicroApplicationContext microApp = LauncherApplicationAgent.getInstance().getMicroApplicationContext();
+//        if (microApp == null) {
+////            LoggerFactory.getTraceLogger().error(TAG,
+////                    "addIdleTask: MicroApplicationContext is NULL");
+//            return false;
+//        }
+//
+//        Pipeline pipeline = microApp.getPipelineByName(PIPELINE_NAME, PIPELINE_TIMEOUT);
+//        boolean pipelineAvailable = pipeline != null;
+//        if (pipelineAvailable) {
+//            pipeline.addTask(task, threadName, taskWeight);
+//        }
+//
+//        String logInfo = pipelineAvailable ? "addIdleTask: " + threadName + ", " + taskWeight
+//                : "类型为" + TAG + "的pipeline不存在";
+////        LoggerFactory.getTraceLogger().info(TAG, logInfo);
+//        return pipelineAvailable;
+//    }
 
-        MicroApplicationContext microApp = LauncherApplicationAgent.getInstance().getMicroApplicationContext();
-        if (microApp == null) {
-//            LoggerFactory.getTraceLogger().error(TAG,
-//                    "addIdleTask: MicroApplicationContext is NULL");
-            return false;
-        }
+//    @Override
+//    public synchronized void onPipelineFinished(String type) {
+//        if (type == null) {
+//            return;
+//        }
+//        // Log.d("faywong", "onPipelineFinished() in, type:" + type);
+////        LoggerFactory.getTraceLogger().info(TAG, "pipeline(event: " + type + ") has finished");
+//        if (type.equals(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED)) {
+//            allPipelineFinished |= 1;
+//        } else if (type.equals(MsgCodeConstants.PIPELINE_FRAMEWORK_CLIENT_STARTED)) {
+//            allPipelineFinished |= (1 << 1);
+//        } else if (type.equals("com.alipay.mobile.PORTAL_TABLAUNCHER_ACTIVATED")) {
+//            allPipelineFinished |= (1 << 2);
+//        }
+//        if (allPipelineFinished == 7 && idleCheckTaskFuture == null) {
+////            LoggerFactory.getTraceLogger().info(TAG,
+////                    "prepareIdleCheckTask as all pipelines have finished!");
+//            idleCheckTaskFuture = prepareIdleCheckTask();
+//        }
+//    }
 
-        Pipeline pipeline = microApp.getPipelineByName(PIPELINE_NAME, PIPELINE_TIMEOUT);
-        boolean pipelineAvailable = pipeline != null;
-        if (pipelineAvailable) {
-            pipeline.addTask(task, threadName, taskWeight);
-        }
-
-        String logInfo = pipelineAvailable ? "addIdleTask: " + threadName + ", " + taskWeight
-                : "类型为" + TAG + "的pipeline不存在";
-//        LoggerFactory.getTraceLogger().info(TAG, logInfo);
-        return pipelineAvailable;
-    }
-
-    @Override
-    public synchronized void onPipelineFinished(String type) {
-        if (type == null) {
-            return;
-        }
-        // Log.d("faywong", "onPipelineFinished() in, type:" + type);
-//        LoggerFactory.getTraceLogger().info(TAG, "pipeline(event: " + type + ") has finished");
-        if (type.equals(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED)) {
-            allPipelineFinished |= 1;
-        } else if (type.equals(MsgCodeConstants.PIPELINE_FRAMEWORK_CLIENT_STARTED)) {
-            allPipelineFinished |= (1 << 1);
-        } else if (type.equals("com.alipay.mobile.PORTAL_TABLAUNCHER_ACTIVATED")) {
-            allPipelineFinished |= (1 << 2);
-        }
-        if (allPipelineFinished == 7 && idleCheckTaskFuture == null) {
-//            LoggerFactory.getTraceLogger().info(TAG,
-//                    "prepareIdleCheckTask as all pipelines have finished!");
-            idleCheckTaskFuture = prepareIdleCheckTask();
-        }
-    }
-
-    private void executeIdleTasks() {
-        if (isExecuteIdleTasks) {
-//            LoggerFactory.getTraceLogger().info(TAG, "executeIdleTasks: already executed");
-            return;
-        }
-        isExecuteIdleTasks = true;
-        MicroApplicationContext microApp = LauncherApplicationAgent.getInstance().getMicroApplicationContext();
-        if (microApp == null) {
-//            LoggerFactory.getTraceLogger().error(TAG, "executeIdleTasks: MicroApplicationContext is NULL");
-            return;
-        }
-        final Pipeline pipeline = microApp.getPipelineByName(PIPELINE_NAME, PIPELINE_TIMEOUT);
-        pipeline.addIdleListener(new Runnable() {
-            private long idleCount;
-            @Override
-            public void run() {
-                idleCount++;
-//                LoggerFactory.getTraceLogger().info(TAG, "idle tasks are all terminated, count: " + idleCount);
-//                pipeline.addIdleListener(null);
-            }
-        });
-//        LoggerFactory.getTraceLogger().info(TAG, "idle tasks are started");
-        pipeline.start();
-    }
+//    private void executeIdleTasks() {
+//        if (isExecuteIdleTasks) {
+////            LoggerFactory.getTraceLogger().info(TAG, "executeIdleTasks: already executed");
+//            return;
+//        }
+//        isExecuteIdleTasks = true;
+//        MicroApplicationContext microApp = LauncherApplicationAgent.getInstance().getMicroApplicationContext();
+//        if (microApp == null) {
+////            LoggerFactory.getTraceLogger().error(TAG, "executeIdleTasks: MicroApplicationContext is NULL");
+//            return;
+//        }
+//        final Pipeline pipeline = microApp.getPipelineByName(PIPELINE_NAME, PIPELINE_TIMEOUT);
+//        pipeline.addIdleListener(new Runnable() {
+//            private long idleCount;
+//            @Override
+//            public void run() {
+//                idleCount++;
+////                LoggerFactory.getTraceLogger().info(TAG, "idle tasks are all terminated, count: " + idleCount);
+////                pipeline.addIdleListener(null);
+//            }
+//        });
+////        LoggerFactory.getTraceLogger().info(TAG, "idle tasks are started");
+//        pipeline.start();
+//    }
 
     @Override
     public Bundle dump() {

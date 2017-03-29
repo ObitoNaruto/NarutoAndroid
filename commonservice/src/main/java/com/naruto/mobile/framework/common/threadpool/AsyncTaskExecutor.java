@@ -79,11 +79,11 @@ public class AsyncTaskExecutor {
      */
     private AsyncTaskExecutor() {
         // SCHEDULED_EXECUTOR.setMaximumPoolSize(MAXIMUM_POOL_SIZE);
-        SCHEDULED_EXECUTOR.setKeepAliveTime(60L, TimeUnit.SECONDS);
-        SCHEDULED_EXECUTOR.allowCoreThreadTimeOut(true);
-        SCHEDULED_EXECUTOR.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        SCHEDULED_EXECUTOR.setKeepAliveTime(60L, TimeUnit.SECONDS);//当线程数大于核心时，此为终止前多余的空闲线程等待新任务的最长时间
+        SCHEDULED_EXECUTOR.allowCoreThreadTimeOut(true);//允许线程数低于corePoolSize时，线程也因为空闲而终止
+        SCHEDULED_EXECUTOR.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());//?找时间仔细研究一下并发线程池的技术
 
-        PARALLEL_EXECUTOR.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        PARALLEL_EXECUTOR.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());//?
     }
 
     /**
@@ -142,6 +142,12 @@ public class AsyncTaskExecutor {
         return schedule(task, "", delay, unit);
     }
 
+    //schedule和scheduleAtFixedRate的区别在于：如果指定开始执行的时间在当前系统运行时间之前，
+    // scheduleAtFixedRate会把已经过去的时间也作为周期执行，而schedule不会把过去的时间算上
+    //举个例子，你有一个任务如果运行完需要8秒，而你设置30秒执行一次的话schedule和scheduleAtFixedRate的效果是一样的都是30秒执行一次。
+    //如果你设置4秒执行一次，那么schedule执行第二次要等第一次执行完成，也就是说实际是8秒执行一次。
+    // 但是要是用scheduleAtFixedRate 的话第二次执行的时候第一次还没有执行完成，因此是严格的4秒执行一次。
+    // （注意这里的“执行”其实是另外开辟线程，因此之前的有没有运行完并不影响下一次的运行）
     public ScheduledFuture<?> schedule(Runnable task, String threadName, long delay, TimeUnit unit) {
         Log.v(TAG, "AsyncTaskExecutor.schedule(Runnable, threadName=" + threadName + ")");
         return SCHEDULED_EXECUTOR.schedule(NamedRunnable.TASK_POOL.obtain(task, threadName), delay, unit);
@@ -152,6 +158,11 @@ public class AsyncTaskExecutor {
         return SCHEDULED_EXECUTOR.scheduleAtFixedRate(task, initialDelay, period, unit);
     }
 
+    /**
+     *
+     scheduleWithFixedDelay从字面意义上可以理解为就是以固定延迟（时间）来执行线程任务，它实际上是不管线程任务的执行时间的，每次都要把任务执行完成后再延迟固定时间后再执行下一次。
+     而scheduleFixedRate呢，是以固定频率来执行线程任务，固定频率的含义就是可能设定的固定时间不足以完成线程任务，但是它不管，达到设定的延迟时间了就要执行下一次了。
+     */
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable task, long initialDelay, long delay, TimeUnit unit) {
         return SCHEDULED_EXECUTOR.scheduleWithFixedDelay(task, initialDelay, delay, unit);
     }
