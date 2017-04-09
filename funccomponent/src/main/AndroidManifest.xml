@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application android:name=".FuncComponentApplication" android:allowBackup="true" android:icon="@mipmap/ic_launcher"
                  android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
@@ -26,6 +27,9 @@
         <activity android:name=".CountDownTimer.CountDownTimerTestActivity" />
         <activity android:name=".serviceaoptestdemo.ServiceAopActivity" android:exported="true">
         </activity>
+
+        <activity android:name=".RainbowBridge.RainbowBrideAcitivity"
+                  android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

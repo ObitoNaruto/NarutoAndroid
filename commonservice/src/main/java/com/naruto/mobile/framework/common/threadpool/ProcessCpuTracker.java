@@ -2,9 +2,9 @@ package com.naruto.mobile.framework.common.threadpool;
 
 import android.util.Log;
 
-import static android.os.Process.PROC_COMBINE;
-import static android.os.Process.PROC_OUT_LONG;
-import static android.os.Process.PROC_SPACE_TERM;
+//import static android.os.Process.PROC_COMBINE;
+//import static android.os.Process.PROC_OUT_LONG;
+//import static android.os.Process.PROC_SPACE_TERM;
 import android.os.Process;
 
 public class ProcessCpuTracker {
@@ -13,14 +13,14 @@ public class ProcessCpuTracker {
     private final static String TOTAL_STAT_FILE = "/proc/stat";
 
     private final static int[] SYSTEM_CPU_FORMAT = new int[] {
-            PROC_SPACE_TERM | PROC_COMBINE, // 0: N/A
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 1: user time
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 2: nice time
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 3: sys time
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 4: idle time
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 5: iowait time
-            PROC_SPACE_TERM | PROC_OUT_LONG, // 6: irq time
-            PROC_SPACE_TERM | PROC_OUT_LONG // 7: softirq time
+//            PROC_SPACE_TERM | PROC_COMBINE, // 0: N/A
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 1: user time
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 2: nice time
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 3: sys time
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 4: idle time
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 5: iowait time
+//            PROC_SPACE_TERM | PROC_OUT_LONG, // 6: irq time
+//            PROC_SPACE_TERM | PROC_OUT_LONG // 7: softirq time
     };
 
     private long[] mTotalCpuData = new long[7];
@@ -43,8 +43,8 @@ public class ProcessCpuTracker {
         boolean isSuccess = false;
 
         try {
-            isSuccess = Process.readProcFile(TOTAL_STAT_FILE,
-                    SYSTEM_CPU_FORMAT, null, mTotalCpuData, null);
+//            isSuccess = Process.readProcFile(TOTAL_STAT_FILE,
+//                    SYSTEM_CPU_FORMAT, null, mTotalCpuData, null);
 
         } catch (Throwable t) {
             Log.w(TAG, t);

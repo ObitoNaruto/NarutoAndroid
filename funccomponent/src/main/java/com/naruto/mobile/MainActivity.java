@@ -8,6 +8,7 @@ import android.view.View;
 import com.naruto.mobile.CountDownTimer.CountDownTimerTestActivity;
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
 import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
+import com.naruto.mobile.RainbowBridge.RainbowBrideAcitivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
 import com.naruto.mobile.serviceaoptestdemo.ServiceAopActivity;
@@ -47,6 +48,11 @@ public class MainActivity extends Activity {
 
     public void onClickServiceAopTest(View view){
         Intent intent = new Intent(this, ServiceAopActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickRainbowBridgeTest(View view){
+        Intent intent = new Intent(this, RainbowBrideAcitivity.class);
         startActivity(intent);
     }
 

@@ -46,5 +46,11 @@
             android:onClick="onClickServiceAopTest"
             android:text="面向服务编程测试demo" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRainbowBridgeTest"
+            android:text="js与native交互demo" />
+
     </LinearLayout>
 </ScrollView>

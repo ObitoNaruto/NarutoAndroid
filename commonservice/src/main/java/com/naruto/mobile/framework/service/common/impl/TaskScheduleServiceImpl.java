@@ -71,7 +71,7 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
                     }
                 }
                 Log.i(TAG, "executeIdleTasks() Reason: timeout");
-                executeIdleTasks();
+//                executeIdleTasks();
             }
         }, IDLE_TIMEOUT /* 超时后无条件执行 */, TimeUnit.SECONDS);
     }
@@ -636,7 +636,7 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
                 return;
             }
             try {
-                executeIdleTasks();
+//                executeIdleTasks();
 //                LoggerFactory.getTraceLogger().info(TAG, "executeIdleTasks() Reason: cpu idle");
             } catch (Throwable t) {
 //                LoggerFactory.getTraceLogger().error(TAG, "IdleCheckTask", t);
@@ -747,6 +747,16 @@ public class TaskScheduleServiceImpl extends TaskScheduleService {
 ////        LoggerFactory.getTraceLogger().info(TAG, "idle tasks are started");
 //        pipeline.start();
 //    }
+
+
+    @Override
+    public boolean addIdleTask(Runnable task, String threadName, int taskWeight) {
+        return false;
+    }
+
+    @Override
+    public void onPipelineFinished(String type) {
+    }
 
     @Override
     public Bundle dump() {
