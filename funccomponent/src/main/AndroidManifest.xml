@@ -30,6 +30,42 @@
 
         <activity android:name=".RainbowBridge.RainbowBrideAcitivity"
                   android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <!-- url Reouter-->
+        <activity android:name=".Router.UrlRouter.UrlRouterActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="native"
+                    android:path="/main"
+                    android:scheme="activity"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Router.UrlRouter.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:host="native"/>
+                <data android:path="/login"/>
+                <data android:scheme="activity"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Router.UrlRouter.product.DetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="activity"/>
+                <data android:host="product"/>
+                <data android:path="/detail"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

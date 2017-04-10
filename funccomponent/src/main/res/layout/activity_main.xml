@@ -52,5 +52,11 @@
             android:onClick="onClickRainbowBridgeTest"
             android:text="js与native交互demo" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickUrlRouterTest"
+            android:text="路由之UrlRouterDemo" />
+
     </LinearLayout>
 </ScrollView>
