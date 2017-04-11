@@ -35,4 +35,32 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Base application theme. -->
+    <style name="SwipeAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="No" parent="SwipeAppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/ht_activity_anima</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <style name="ht_activity_anima" parent="SwipeAppTheme">
+        <item name="android:activityOpenEnterAnimation">@anim/ht_push_left_in</item>
+        <!-- 左进 -->
+        <item name="android:activityOpenExitAnimation">@anim/ht_push_left_out</item>
+        <!-- 左出 -->
+        <item name="android:activityCloseEnterAnimation">@anim/ht_push_right_in</item>
+        <!-- 右进 -->
+        <item name="android:activityCloseExitAnimation">@anim/ht_push_right_out</item>
+        <!-- 右出 -->
+    </style>
+
 </resources>

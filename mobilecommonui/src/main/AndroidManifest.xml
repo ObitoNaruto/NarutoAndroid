@@ -54,6 +54,16 @@
         />
         <activity android:name="com.naruto.mobile.mvpFramework.demo.mvp.lce.viewpager.ViewPagerActivity"
                   android:label="ViewPager" />
+
+        <activity android:name="com.naruto.mobile.swipeback.demo.SwipeBackMainActivity"
+                  android:theme="@style/No"></activity>
+        <activity
+            android:name="com.naruto.mobile.swipeback.demo.TestActivity1"
+            android:theme="@style/SwipeAppTheme"/>
+        <activity
+            android:name="com.naruto.mobile.swipeback.demo.TestActivity2"
+            android:theme="@style/SwipeAppTheme"/>
+
     </application>
 
 </manifest>
