@@ -58,5 +58,11 @@
             android:onClick="onClickUrlRouterTest"
             android:text="路由之UrlRouterDemo" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAndRouterTest"
+            android:text="路由之AndRouterDemo" />
+
     </LinearLayout>
 </ScrollView>

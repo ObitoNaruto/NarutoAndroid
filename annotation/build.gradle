@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+apply plugin: 'maven'
+
+//以下两行很关键，否则项目在编译时会提示：Error:unsupported class file version 52.0
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}

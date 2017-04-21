@@ -1,0 +1,9 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':annotation')  //发布之后需要替换为网上的地址，
+    compile 'com.squareup:javapoet:1.6.1'//JavaPoet 这个库的主要作用就是帮助我们通过类调用的形式来生成代码
+    compile 'com.google.auto.service:auto-service:1.0-rc2'//AutoService 主要的作用是注解 processor 类,AutoService 主要的作用是注解 processor 类
+}

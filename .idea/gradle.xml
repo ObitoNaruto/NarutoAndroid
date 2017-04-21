@@ -8,9 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annotation" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baseservice" />
             <option value="$PROJECT_DIR$/commonservice" />
+            <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/funccomponent" />
             <option value="$PROJECT_DIR$/material-spinner-1.0.5" />
             <option value="$PROJECT_DIR$/mobilecommonui" />
@@ -19,9 +21,11 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annotation" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baseservice" />
             <option value="$PROJECT_DIR$/commonservice" />
+            <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/funccomponent" />
             <option value="$PROJECT_DIR$/material-spinner-1.0.5" />
             <option value="$PROJECT_DIR$/mobilecommonui" />

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              tools:context="cn.campusapp.router.sample.MainActivity">
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Open Second Activity"/>
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Open with animation"/>
+
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Open with reversal animation"/>
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Open Second Activity for result"/>
+
+
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Put extra value"/>
+
+
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Multi Annotation mapping"/>
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Open WebView"/>
+
+
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Unknow"/>
+
+    <Button
+        android:id="@+id/btn9"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="SOUHU"/>
+
+    <Button
+        android:id="@+id/btn10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="INTERCEPTED"/>
+
+    <Button
+        android:id="@+id/btn11"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="INTERCEPTED_USE_AR"/>
+
+
+
+</LinearLayout>

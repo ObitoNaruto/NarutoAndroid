@@ -66,6 +66,13 @@
                 <data android:path="/detail"/>
             </intent-filter>
         </activity>
+
+        <!--AndRouter demo-->
+        <activity android:name=".Router.AndRouter.AndRouterMainActivity"
+                  android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Router.AndRouter.AndRouterSecondActivity"></activity>
+        <activity android:name=".Router.AndRouter.AndRouterThirdActivity"></activity>
+        <activity android:name=".Router.AndRouter.AndRouterErrorActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 24
@@ -44,20 +45,21 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    //    compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     //KLog
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'cz.msebera.android:httpclient:4.3.6'
-
     //LogReport
-//    compile files('libs/httpclient-4.2.5.jar')
+    //    compile files('libs/httpclient-4.2.5.jar')
     compile files('libs/activation.jar')
     compile files('libs/mail.jar')
     compile files('libs/additionnal.jar')
-
     compile project(path: ':baseservice')
     compile project(path: ':commonservice')
+    //andRouter
+    compile 'com.google.code.gson:gson:2.6.2'
+    apt project(':compiler')
 }

@@ -9,6 +9,7 @@ import com.naruto.mobile.CountDownTimer.CountDownTimerTestActivity;
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandlerTestActivity;
 import com.naruto.mobile.LogReport.PowerLogReport.LogReportTestActivity;
 import com.naruto.mobile.RainbowBridge.RainbowBrideAcitivity;
+import com.naruto.mobile.Router.AndRouter.AndRouterMainActivity;
 import com.naruto.mobile.Router.UrlRouter.UrlRouterActivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
@@ -59,6 +60,11 @@ public class MainActivity extends Activity {
 
     public void onClickUrlRouterTest(View view){
         Intent intent = new Intent(this, UrlRouterActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickAndRouterTest(View view){
+        Intent intent = new Intent(this, AndRouterMainActivity.class);
         startActivity(intent);
     }
 

@@ -1,11 +1,22 @@
 package com.naruto.mobile;
 
 
+import android.app.Activity;
+import android.content.Context;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.naruto.mobile.LogReport.CrashHandler.CrashHandler;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.LogReport;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.save.imp.CrashWriter;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.upload.email.EmailReporter;
 import com.naruto.mobile.LogReport.PowerLogReport.libray.upload.http.HttpReporter;
+import com.naruto.mobile.Router.AndRouter.AndRouterSecondActivity;
+import com.naruto.mobile.base.Router.andRouter.Router;
+import com.naruto.mobile.base.Router.andRouter.interceptor.Interceptor;
+import com.naruto.mobile.base.Router.andRouter.router.IActivityRouteTableInitializer;
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
 import com.naruto.mobile.log.KLog.KLog;
 
@@ -27,6 +38,9 @@ public class FuncComponentApplication extends NarutoApplication{
 
         //--------------------------LogReport test-------------------------------------
         initCrashReport();
+
+        //-----------------------init andRouter------------------
+        initRouter();
     }
 
     private void initCrashReport() {
@@ -66,5 +80,37 @@ public class FuncComponentApplication extends NarutoApplication{
         http.setTitleParam("subject");//标题
         http.setBodyParam("message");//内容
         LogReport.getInstance().setUploadType(http);
+    }
+
+    private static final HashMap<String, String> INTERCEPTOR_BLACK_LIST_SET = new LinkedHashMap<>();
+
+    static {
+        INTERCEPTOR_BLACK_LIST_SET.put("http://www.souhu.com", "activity://error");
+        INTERCEPTOR_BLACK_LIST_SET.put("activity://intercepted", "activity://error");
+    }
+
+    private void initRouter(){
+        Router.initActivityRouter(getApplicationContext(), new IActivityRouteTableInitializer() {
+            //router就是ActivityRouter中的mRouteTable
+            @Override
+            public void initRouterTable(Map<String, Class<? extends Activity>> router) {
+                router.put("activity://second/:{name}", AndRouterSecondActivity.class);
+            }
+        }, "activity", "activity2");
+        // Router.initActivityRouter(this);
+        Router.initBrowserRouter(getApplicationContext());
+        // to output logs of AndRouter
+        Router.setDebugMode(true);
+        //设置拦截器
+        Router.setInterceptor(new Interceptor() {
+            @Override
+            public boolean intercept(Context context, String url) {
+                if(INTERCEPTOR_BLACK_LIST_SET.keySet().contains(url)){
+                    Router.open(context, INTERCEPTOR_BLACK_LIST_SET.get(url));
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }
