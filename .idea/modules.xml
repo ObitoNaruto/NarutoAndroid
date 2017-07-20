@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NarutoAndroid.iml" filepath="$PROJECT_DIR$/NarutoAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NetworkLibraries/volley/NetworkLibraries_volley.iml" filepath="$PROJECT_DIR$/NetworkLibraries/volley/NetworkLibraries_volley.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotation/annotation.iml" filepath="$PROJECT_DIR$/annotation/annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseservice/baseservice.iml" filepath="$PROJECT_DIR$/baseservice/baseservice.iml" />

@@ -13,6 +13,7 @@ import com.naruto.mobile.Router.AndRouter.AndRouterMainActivity;
 import com.naruto.mobile.Router.UrlRouter.UrlRouterActivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
+import com.naruto.mobile.rpc.volley.VolleyDemoActivity;
 import com.naruto.mobile.serviceaoptestdemo.ServiceAopActivity;
 
 public class MainActivity extends Activity {
@@ -65,6 +66,11 @@ public class MainActivity extends Activity {
 
     public void onClickAndRouterTest(View view){
         Intent intent = new Intent(this, AndRouterMainActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickRPCVolleyTest(View view){
+        Intent intent = new Intent(this, VolleyDemoActivity.class);
         startActivity(intent);
     }
 

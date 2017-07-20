@@ -62,4 +62,6 @@ dependencies {
     //andRouter
     compile 'com.google.code.gson:gson:2.6.2'
     apt project(':compiler')
+    compile project(':NetworkLibraries/volley')
+    compile 'com.google.code.gson:gson:2.2.4'
 }

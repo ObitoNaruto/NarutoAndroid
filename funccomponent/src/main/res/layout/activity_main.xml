@@ -64,5 +64,11 @@
             android:onClick="onClickAndRouterTest"
             android:text="路由之AndRouterDemo" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRPCVolleyTest"
+            android:text="rpc之volley" />
+
     </LinearLayout>
 </ScrollView>

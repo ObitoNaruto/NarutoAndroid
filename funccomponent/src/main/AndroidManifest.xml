@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application android:name=".FuncComponentApplication" android:allowBackup="true" android:icon="@mipmap/ic_launcher"
                  android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
@@ -25,54 +25,51 @@
 
         <activity android:name=".binderPool.BinderPoolActivity" />
         <activity android:name=".CountDownTimer.CountDownTimerTestActivity" />
-        <activity android:name=".serviceaoptestdemo.ServiceAopActivity" android:exported="true">
-        </activity>
+        <activity android:name=".serviceaoptestdemo.ServiceAopActivity" android:exported="true" />
+        <activity android:name=".RainbowBridge.RainbowBrideAcitivity" android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".RainbowBridge.RainbowBrideAcitivity"
-                  android:theme="@style/AppTheme.NoActionBar"></activity>
-
-
-        <!-- url Reouter-->
-        <activity android:name=".Router.UrlRouter.UrlRouterActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <!-- url Reouter -->
+        <activity android:name=".Router.UrlRouter.UrlRouterActivity" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data
-                    android:host="native"
-                    android:path="/main"
-                    android:scheme="activity"/>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:host="native" android:path="/main" android:scheme="activity" />
             </intent-filter>
         </activity>
         <activity android:name=".Router.UrlRouter.login.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:host="native"/>
-                <data android:path="/login"/>
-                <data android:scheme="activity"/>
+                <data android:host="native" />
+                <data android:path="/login" />
+                <data android:scheme="activity" />
             </intent-filter>
         </activity>
         <activity android:name=".Router.UrlRouter.product.DetailActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <data android:scheme="activity"/>
-                <data android:host="product"/>
-                <data android:path="/detail"/>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="activity" />
+                <data android:host="product" />
+                <data android:path="/detail" />
             </intent-filter>
         </activity>
 
-        <!--AndRouter demo-->
-        <activity android:name=".Router.AndRouter.AndRouterMainActivity"
-                  android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Router.AndRouter.AndRouterSecondActivity"></activity>
-        <activity android:name=".Router.AndRouter.AndRouterThirdActivity"></activity>
-        <activity android:name=".Router.AndRouter.AndRouterErrorActivity"></activity>
+        <!-- AndRouter demo -->
+        <activity android:name=".Router.AndRouter.AndRouterMainActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Router.AndRouter.AndRouterSecondActivity" />
+        <activity android:name=".Router.AndRouter.AndRouterThirdActivity" />
+        <activity android:name=".Router.AndRouter.AndRouterErrorActivity" />
+        <activity android:name=".rpc.volley.VolleyDemoActivity" />
+        <activity android:name=".rpc.volley.SendSimpleRequestAcvity" />
+        <activity android:name=".rpc.volley.SettingUpRequestQueueActivity" />
+        <activity android:name=".rpc.volley.MarkingStandardRequestActivity"></activity>
     </application>
 
 </manifest>

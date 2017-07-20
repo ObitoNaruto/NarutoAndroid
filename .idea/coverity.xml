@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CoverityDesktopSettings">
+    <option name="children">
+      <map>
+        <entry key="analysis.configurations">
+          <value>
+            <SettingsBean>
+              <option name="properties">
+                <map>
+                  <entry key="configuration.active" value="Default" />
+                  <entry key="configuration.schema.version" value="1" />
+                </map>
+              </option>
+              <option name="children">
+                <map>
+                  <entry key="configurations">
+                    <value>
+                      <SettingsBean>
+                        <option name="children">
+                          <map>
+                            <entry key="Default">
+                              <value>
+                                <SettingsBean>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="PREF_CMD_LINE_SETTINGS">
+                                        <value>
+                                          <SettingsBean />
+                                        </value>
+                                      </entry>
+                                      <entry key="PREF_SCM_CONFIGURATION">
+                                        <value>
+                                          <SettingsBean />
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                </SettingsBean>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </SettingsBean>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </SettingsBean>
+          </value>
+        </entry>
+        <entry key="environment">
+          <value>
+            <SettingsBean />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
