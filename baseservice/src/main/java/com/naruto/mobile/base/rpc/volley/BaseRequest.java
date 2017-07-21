@@ -33,11 +33,7 @@ public abstract class BaseRequest<T> extends Request<T> implements Response.Erro
 
     public BaseRequest(int method, String url, IRequestCallback listener) {
         super(method, url, null);
-        putParams();
         mListener = listener;
-    }
-
-    protected void putParams() {
     }
 
     /**
@@ -172,4 +168,5 @@ public abstract class BaseRequest<T> extends Request<T> implements Response.Erro
     protected BaseHost getHost() {
         return new Task1Host();
     }
+
 }

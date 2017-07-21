@@ -10,16 +10,9 @@ import com.google.gson.annotations.SerializedName;
  "errDesc":"SUCCESS",
  "data":[
  {
- "id":3,
- "name":"北京一卡通充值优惠",
- "issueDiscount":1000,
- "rechargeDiscount":2000,
- "totalDiscount":3000,
- "issuePayFee":2000,
- "rechargePayFee":2000,
- "totalPayFee":4000,
- "valid":true,
- "desc":"优惠不可叠加"
+ "id":1,
+ "name":"测试",
+ "test":1000
  }
  ]
  }

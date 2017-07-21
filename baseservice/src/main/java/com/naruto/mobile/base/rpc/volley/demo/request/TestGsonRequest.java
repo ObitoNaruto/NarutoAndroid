@@ -17,10 +17,9 @@ public class TestGsonRequest extends GsonRequest<TestGsonResponse> {
         super(context, Method.GET, "api/login/queryTest", TestGsonResponse.class, listener);
     }
 
-    @Override
-    protected void putParams() {
-        //示例
-        putParams("key1", "key1Value").putParams("key2", "key2Value");
+    public void setRequestParameter(String parameter1, int parameter2){
+        putParams(Constans.KEY_PARAMETER_KEY1, parameter1)
+                .putParams(Constans.KEY_PARAMETER_KEY2, String.valueOf(parameter2));
     }
 
     @Override
@@ -38,8 +37,4 @@ public class TestGsonRequest extends GsonRequest<TestGsonResponse> {
         return super.isSuccess(response);
     }
 
-    //对外暴露的调起接口
-    public void execute() {
-        VolleySingleton.getInstance(mContext).addToRequestQueue(this);
-    }
 }

@@ -11,15 +11,13 @@ import com.naruto.mobile.base.rpc.volley.demo.response.TestGsonResponse;
 
 public class TestSyncGsonRequest extends GsonSyncRequest<TestGsonResponse> {
 
-
     public TestSyncGsonRequest(Context context) {
         super(context, Method.GET, "api/login/queryTest", TestGsonResponse.class);
     }
 
-    @Override
-    protected void putParams() {
-        //示例
-        putParams("key1", "key1Value").putParams("key2", "key2Value");
+    public void setRequestParameter(String parameter1, int parameter2){
+        putParams(Constans.KEY_PARAMETER_KEY1, parameter1)
+                .putParams(Constans.KEY_PARAMETER_KEY2, String.valueOf(parameter2));
     }
 
     @Override

@@ -16,6 +16,7 @@ public class Test {
     public void excuteSyncRequest() {
         TestSyncGsonRequest testSyncGsonRequest = new TestSyncGsonRequest(
                 NarutoApplication.getInstance().getApplicationContext());
+        testSyncGsonRequest.setRequestParameter("parameter1", 0);
         testSyncGsonRequest.execute();
         try {
             TestGsonResponse response = testSyncGsonRequest.getResponse();
@@ -43,6 +44,7 @@ public class Test {
                         // TODO: 17-7-19 异步请求失败，下一步业务逻辑
                     }
                 });
+        testGsonRequest.setRequestParameter("parameter1", 0);
         testGsonRequest.execute();
     }
 

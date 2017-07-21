@@ -115,4 +115,8 @@ public abstract class BaseSecureRequest<T> extends BaseRequest<T> {
 
     protected abstract Response<T> parseNetworkResponse(NetworkResponse response, String body);
 
+    //对外暴露的调起接口
+    public void execute() {
+        VolleySingleton.getInstance(mContext).addToRequestQueue(this);
+    }
 }
