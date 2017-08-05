@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.biz.ext.impl;
+package com.naruto.mobile.framework.biz.ext.shortCut.impl;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
-import com.naruto.mobile.framework.biz.ext.ShortCutService;
+import com.naruto.mobile.framework.biz.ext.shortCut.ShortCutService;
 
 public class ShortCutServiceImpl extends ShortCutService{
 

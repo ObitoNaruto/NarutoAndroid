@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.biz.ext;
+package com.naruto.mobile.framework.biz.ext.shortCut;
 
 import android.graphics.Bitmap;
 

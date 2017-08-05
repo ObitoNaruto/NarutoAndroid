@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.biz.ext.impl;
+package com.naruto.mobile.framework.biz.ext.shortCut.impl;
 
 import android.content.ContentResolver;
 import android.content.Context;
