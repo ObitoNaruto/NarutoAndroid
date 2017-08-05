@@ -1,7 +1,5 @@
 package com.naruto.mobile.serviceaoptestdemo;
 
-import android.content.ComponentName;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +12,7 @@ import com.naruto.mobile.R;
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
 import com.naruto.mobile.base.serviceaop.demo.service.ExtTextService;
 import com.naruto.mobile.base.serviceaop.demo.service.InnerTxtService;
-import com.naruto.mobile.framework.biz.ext.ShortCutService;
+import com.naruto.mobile.framework.biz.ext.shortCut.ShortCutService;
 
 public class ServiceAopActivity extends AppCompatActivity {
 

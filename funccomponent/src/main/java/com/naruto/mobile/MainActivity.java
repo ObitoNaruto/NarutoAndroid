@@ -13,6 +13,8 @@ import com.naruto.mobile.Router.AndRouter.AndRouterMainActivity;
 import com.naruto.mobile.Router.UrlRouter.UrlRouterActivity;
 import com.naruto.mobile.binderPool.BinderPoolActivity;
 import com.naruto.mobile.log.KLog.test.KLogTestActivity;
+import com.naruto.mobile.multimedia.MultimediaDemoActivity;
+import com.naruto.mobile.photo_demo_test.PhotoServiceDemoActivity;
 import com.naruto.mobile.rpc.volley.VolleyDemoActivity;
 import com.naruto.mobile.serviceaoptestdemo.ServiceAopActivity;
 
@@ -71,6 +73,16 @@ public class MainActivity extends Activity {
 
     public void onClickRPCVolleyTest(View view){
         Intent intent = new Intent(this, VolleyDemoActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickMultimediaDemo(View view){
+        Intent intent = new Intent(this, MultimediaDemoActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickPhotoServiceDemoActivity(View view){
+        Intent intent = new Intent(this, PhotoServiceDemoActivity.class);
         startActivity(intent);
     }
 

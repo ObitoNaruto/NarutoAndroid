@@ -69,7 +69,9 @@
         <activity android:name=".rpc.volley.VolleyDemoActivity" />
         <activity android:name=".rpc.volley.SendSimpleRequestAcvity" />
         <activity android:name=".rpc.volley.SettingUpRequestQueueActivity" />
-        <activity android:name=".rpc.volley.MarkingStandardRequestActivity"></activity>
+        <activity android:name=".rpc.volley.MarkingStandardRequestActivity" />
+        <activity android:name=".multimedia.MultimediaDemoActivity" />
+        <activity android:name=".photo_demo_test.PhotoServiceDemoActivity"></activity>
     </application>
 
 </manifest>
