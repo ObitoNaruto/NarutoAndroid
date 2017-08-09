@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="43dp"
+    android:background="#ccff6600"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/h5_simple_tip_warn"
+        android:paddingLeft="14dp" />
+
+    <TextView
+        android:id="@+id/h5_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="14dp"
+        android:text="@string/security_tips"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/false_image"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/h5_simple_toast_false"
+        android:paddingRight="14dp" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/pop_item_height"
+    android:background="@drawable/popup_item_selector" >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tv_divider"
+        android:gravity="center|left"
+        android:maxLength="8"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:singleLine="true"
+        android:textColor="@color/popup_item_text"
+        android:textSize="@dimen/h5_font_16sp" />
+
+    <TextView
+        android:id="@+id/tv_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/more_options_divider" />
+
+</RelativeLayout>

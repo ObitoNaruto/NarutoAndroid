@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/h5_web_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent" >
+
+    <TextView
+        android:id="@+id/tv_h5_provider"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/transparent"
+        android:gravity="center|top"
+        android:paddingTop="6dp"
+        android:text="test"
+        android:textColor="@color/white" />
+
+    <com.naruto.mobile.h5container.refresh.H5PullContainer
+        android:id="@+id/pc_h5_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent" />
+
+    <com.naruto.mobile.h5container.view.H5Progress
+        android:id="@+id/pb_h5_progress"
+        style="@style/wb_progress"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentTop="true"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:secondaryProgress="0" />
+
+</RelativeLayout>

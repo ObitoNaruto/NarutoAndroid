@@ -1,0 +1,20 @@
+<resources>
+
+    <dimen name="h5_font_16sp">16sp</dimen>
+    <dimen name="h5_nav_button_text">15.3sp</dimen>
+    <dimen name="h5_nav_title_text">18.7sp</dimen>
+    <dimen name="h5_nav_subtitle_text">13.2sp</dimen>
+    <dimen name="h5_nav_menu_font">16sp</dimen>
+    <dimen name="pop_item_height">38dp</dimen>
+    <dimen name="h5_nav_menu_height">48dp</dimen>
+    <dimen name="h5_nav_menu_divider">1px</dimen>
+    <dimen name="h5_nav_menu_icon">22dp</dimen>
+    <dimen name="h5_tool_bar_icon">44dp</dimen>
+    <dimen name="h5_tool_bar_height">44dp</dimen>
+    <dimen name="h5_title_height">48dp</dimen>
+    <dimen name="h5_bottom_height">44dp</dimen>
+    <dimen name="nav_options_selector_width">36dp</dimen>
+    <dimen name="nav_options_selector_padding">6dp</dimen>
+    <dimen name="nav_options_selector_margin_right">6dp</dimen>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.naruto.mobile.h5container.refresh.H5PullHeader xmlns:android="http://schemas.android.com/apk/res/android"
+                                                    android:id="@+id/refresh_overView"
+                                                    android:layout_width="fill_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:paddingBottom="4dp"
+                                                    android:paddingLeft="2dp"
+                                                    android:paddingRight="2dp"
+                                                    android:paddingTop="4dp" >
+
+    <LinearLayout
+        android:id="@+id/pullrefresh_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/pullrefresh_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/pullrefresh_summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pullrefresh_progress"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp" />
+
+</com.naruto.mobile.h5container.refresh.H5PullHeader>

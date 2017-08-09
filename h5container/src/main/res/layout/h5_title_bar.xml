@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_h5_title_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/h5_title_height"
+    android:background="#37322f" >
+
+    <LinearLayout
+        android:id="@+id/ll_h5_title"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_h5_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="18.7sp" />
+
+        <TextView
+            android:id="@+id/tv_h5_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:drawablePadding="5.4dp"
+            android:drawableRight="@drawable/h5_titlebar_sub"
+            android:gravity="center"
+            android:padding="5.4dp"
+            android:textColor="@color/white"
+            android:textSize="13.3sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/h5_nav_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp" >
+
+        <ImageButton
+            android:id="@+id/bt_h5_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY" />
+
+        <Button
+            android:id="@+id/bt_h5_text"
+            android:layout_width="72dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:background="@drawable/bt_titlebar"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/bt_h5_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/bt_h5_dot_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@drawable/redpoint"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/bt_h5_dot_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:includeFontPadding="false"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/h5_titlebar_back"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/h5_titlebar_back" />
+    
+</RelativeLayout>

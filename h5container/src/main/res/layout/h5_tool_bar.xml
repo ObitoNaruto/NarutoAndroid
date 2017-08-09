@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/h5_bottom_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/h5_bottom_bg" >
+
+    <LinearLayout
+        android:id="@+id/h5_toolbar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h5_tool_bar_icon"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="@dimen/h5_tool_bar_icon"
+            android:contentDescription="@string/blank"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/backward_selector" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/h5_backward"
+            android:textColor="@drawable/h5_bottom_btn_text"
+            android:textSize="@dimen/h5_font_16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/h5_toolbar_close"
+        android:layout_width="52dp"
+        android:layout_height="@dimen/h5_tool_bar_icon"
+        android:layout_toRightOf="@+id/h5_toolbar_back"
+        android:clickable="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="10dp"
+        android:text="@string/h5_close"
+        android:textColor="@drawable/h5_bottom_btn_text"
+        android:textSize="@dimen/h5_font_16sp" />
+
+    <ImageView
+        android:id="@+id/h5_toolbar_menu_setting"
+        android:layout_width="@dimen/h5_tool_bar_icon"
+        android:layout_height="@dimen/h5_tool_bar_icon"
+        android:layout_toLeftOf="@+id/h5_toolbar_refresh"
+        android:clickable="true"
+        android:contentDescription="@string/blank"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/font_size_selector" />
+
+    <RelativeLayout
+        android:id="@+id/h5_toolbar_refresh"
+        android:layout_width="@dimen/h5_tool_bar_icon"
+        android:layout_height="@dimen/h5_tool_bar_icon"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:padding="10dp" >
+
+        <ProgressBar
+            android:id="@+id/h5_toolbar_pb_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/h5_toolbar_iv_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="@string/blank"
+            android:scaleType="centerInside"
+            android:src="@drawable/refresh_selector"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</RelativeLayout>

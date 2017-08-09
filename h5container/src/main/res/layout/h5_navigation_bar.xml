@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.naruto.mobile.h5container.view.H5RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     xmlns:tools="http://schemas.android.com/tools"
+                                                     android:id="@+id/rl_h5_title_bar"
+                                                     android:layout_width="fill_parent"
+                                                     android:layout_height="@dimen/h5_title_height"
+                                                     android:background="#37322f" >
+
+    <RelativeLayout
+        android:id="@+id/ll_h5_title"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_h5_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h5_nav_title_text" />
+
+        <TextView
+            android:id="@+id/tv_h5_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/tv_h5_title"
+            android:drawablePadding="6dp"
+            android:drawableRight="@drawable/h5_titlebar_sub"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h5_nav_subtitle_text" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_nav_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="13.3dp"
+        android:drawableLeft="@drawable/h5_titlebar_back"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/h5_backward"
+        android:textColor="@drawable/h5_nav_btn_text"
+        android:textSize="@dimen/h5_nav_button_text" />
+
+    <TextView
+        android:id="@+id/h5_nav_close"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h5_tool_bar_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="6dp"
+        android:layout_toRightOf="@+id/tv_nav_back"
+        android:clickable="true"
+        android:gravity="center|left"
+        android:maxLength="3"
+        android:singleLine="true"
+        android:text="@string/h5_close"
+        android:textColor="@drawable/h5_nav_btn_text"
+        android:textSize="@dimen/h5_nav_button_text" />
+
+    <FrameLayout
+        android:id="@+id/h5_nav_options"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+
+        <ImageButton
+            android:id="@+id/bt_h5_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="12dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bt_h5_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="12dp"
+            android:background="@null"
+            android:singleLine="true"
+            android:textColor="@drawable/h5_nav_btn_text"
+            android:textSize="@dimen/h5_nav_button_text" />
+
+        <ImageButton
+            android:id="@+id/bt_h5_options"
+            android:layout_width="@dimen/nav_options_selector_width"
+            android:layout_height="44dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="@dimen/nav_options_selector_margin_right"
+            android:background="@null"
+            android:padding="@dimen/nav_options_selector_padding"
+            android:scaleType="centerInside"
+            android:src="@drawable/h5_nav_options_selector"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <FrameLayout
+            android:id="@+id/bt_h5_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="6dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/bt_h5_dot_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/redpoint"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/bt_h5_dot_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/msg_flag_bg"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </FrameLayout>
+    </FrameLayout>
+
+</com.naruto.mobile.h5container.view.H5RelativeLayout>
