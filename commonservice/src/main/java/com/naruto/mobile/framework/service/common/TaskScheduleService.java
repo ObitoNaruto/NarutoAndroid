@@ -86,9 +86,6 @@ public abstract class TaskScheduleService extends CommonService {
 
     /**
      * 获取期望的Executor实例(线程安全)
-     *
-     * @param type
-     *        executor类型 @see com.alipay.mobile.framework.service.common.TaskScheduleService.ScheduleType
      * @return
      */
     public abstract ThreadPoolExecutor acquireExecutor(ScheduleType type);
@@ -134,8 +131,8 @@ public abstract class TaskScheduleService extends CommonService {
      * 添加Task到Idle线程池中，app启动后整个实例存留期间第一次相对空闲时运行该Task，可设置权重
      *
      * @param task 任务
-     * @param name 执行时的线程名
-     * @param weight 权重
+     * @param threadName 执行时的线程名
+     * @param taskWeight 权重
      * @return
      */
     public abstract boolean addIdleTask(Runnable task, String threadName, int taskWeight);

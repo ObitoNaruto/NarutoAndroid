@@ -1,7 +1,9 @@
 package com.naruto.mobile.serviceaoptestdemo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import com.naruto.mobile.R;
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
+import com.naruto.mobile.base.serviceaop.demo.broadcast.TestDemoReceiverConstants;
 import com.naruto.mobile.base.serviceaop.demo.service.ExtTextService;
 import com.naruto.mobile.base.serviceaop.demo.service.InnerTxtService;
 import com.naruto.mobile.framework.biz.ext.shortCut.ShortCutService;
@@ -32,6 +35,11 @@ public class ServiceAopActivity extends AppCompatActivity {
         InnerTxtService innerTxtService = NarutoApplication.getInstance().getNarutoApplicationContext().findServiceByInterface(InnerTxtService.class.getName());
         Log.d("xxm, 1 - 9", innerTxtService.subtract(1, 9) + "");
         mTextView2.setText(innerTxtService.subtract(1, 9)+ "");
+
+        //测试一下系统框架的广播
+        Intent intent = new Intent(TestDemoReceiverConstants.TEST_BROADCAST_RECEIVER);
+        LocalBroadcastManager.getInstance(NarutoApplication.getInstance().getApplicationContext()).sendBroadcast(intent);
+
     }
 
     public void onClickShortcutService(View view){

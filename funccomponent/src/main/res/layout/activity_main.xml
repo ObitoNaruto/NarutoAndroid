@@ -70,5 +70,18 @@
             android:onClick="onClickRPCVolleyTest"
             android:text="rpc之volley" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickMultimediaDemo"
+            android:text="MultimediaDemo(不可用，仅看代码用)" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickPhotoServiceDemoActivity"
+            android:text="两个activity之间跳转用回调形式y" />
+
+
     </LinearLayout>
 </ScrollView>

@@ -2,7 +2,7 @@
 
 --------
 
-##1 Git使用
+## 1 Git使用
 > <br>本文档只是Git的基本操作，进一步深入学习请参考git教程，可在<a href='http://www.runoob.com/git/git-tutorial.html'>here</a>参考学习
 
 ###1.1 Git安装配置

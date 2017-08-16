@@ -7,6 +7,7 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
+import com.naruto.mobile.base.serviceaop.broadcast.LocalBroadcastManagerWrapper;
 import com.naruto.mobile.base.serviceaop.init.impl.BootLoaderImpl;
 import com.naruto.mobile.base.serviceaop.service.MicroService;
 import com.naruto.mobile.base.serviceaop.service.ServiceManager;
@@ -33,6 +34,11 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
      * 服务管理
      */
     private ServiceManager mServiceManager;
+
+    /**
+     * 应用内广播管理器
+     */
+    LocalBroadcastManagerWrapper mLocalBroadcastManagerWrapper;
 
     @Override
     public WeakReference<Activity> getTopActivity() {
@@ -90,6 +96,13 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     private void init(){
         mServiceManager = new ServiceManagerImpl();
         mServiceManager.attachContext(this);//为服务管理器绑定项目上下文环境
+
+        /**
+         * 应用内BroadcastReceiver管理器
+         */
+        mLocalBroadcastManagerWrapper = LocalBroadcastManagerWrapper.getInstance(mApplication);
+        mServiceManager.registerService(LocalBroadcastManagerWrapper.class.getName(),
+                mLocalBroadcastManagerWrapper);
 
         new BootLoaderImpl(NarutoApplicationContextImpl.this).load();//初始化并进行加载load
     }

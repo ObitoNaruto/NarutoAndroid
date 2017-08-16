@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- FlowTipView -->
+    <declare-styleable name="FlowTipView">
+
+        <!-- FlowTipView的类型 -->
+        <attr name="flow_tip_view_type">
+            <flag name="network_error" value="0x10" />
+            <flag name="empty" value="0x11" />
+            <flag name="warning" value="0x12" />
+        </attr>
+        <attr name="isSimpleMode" format="boolean" />
+    </declare-styleable>
+</resources>

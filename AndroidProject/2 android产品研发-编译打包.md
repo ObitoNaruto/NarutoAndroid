@@ -1,16 +1,19 @@
-##1 gradle
+## 1 gradle
 
-###1.1 jar
+Gradle从入门到实战 - Groovy基础》:
+https://mp.weixin.qq.com/s/dNLqPUYsmzG7qyhU1O9hoA
 
-###1.2 aar
+### 1.1 jar
 
-###1.3 apk
+### 1.2 aar
 
-##2 maven
+### 1.3 apk
 
-##3 make
+## 2 maven
 
-##4 多渠道打包
+## 3 make
+
+## 4 多渠道打包
 
 
 

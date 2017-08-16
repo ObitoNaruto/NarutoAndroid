@@ -1,7 +1,12 @@
 package com.naruto.mobile.base.serviceaop.service;
 
+import android.content.BroadcastReceiver;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.naruto.mobile.base.serviceaop.broadcast.BroadcastReceiverDescription;
+import com.naruto.mobile.base.serviceaop.task.ValueDescription;
 
 /**
  * Created by xinming.xxm on 2016/5/15.
@@ -9,6 +14,9 @@ import java.util.List;
 public abstract class BaseMetaInfo {
 
     public List<ServiceDescription> services = new ArrayList<ServiceDescription>();
+    public List<BroadcastReceiverDescription> broadcastReceivers = new ArrayList<>();
+    public List<ValueDescription> mValueDescriptions = new ArrayList<>();
+
 
     public List<ServiceDescription> getServices() {
         return services;
@@ -23,5 +31,36 @@ public abstract class BaseMetaInfo {
             services = new ArrayList<ServiceDescription>();
         }
         services.add(serviceDescription);
+    }
+
+    public List<BroadcastReceiverDescription> getBroadcastReceivers() {
+        return broadcastReceivers;
+    }
+
+    public void setBroadcastReceivers(List<BroadcastReceiverDescription> broadcastReceivers) {
+        this.broadcastReceivers = broadcastReceivers;
+    }
+
+    public void addBroadcastReceiver(BroadcastReceiverDescription broadcastReceiverDescription){
+        if(broadcastReceivers == null){
+            broadcastReceivers = new ArrayList<>();
+        }
+        broadcastReceivers.add(broadcastReceiverDescription);
+    }
+
+    public List<ValueDescription> getValueDescriptions() {
+        return mValueDescriptions;
+    }
+
+    public void setValueDescriptions(
+            List<ValueDescription> valueDescriptions) {
+        mValueDescriptions = valueDescriptions;
+    }
+
+    public void addValueDescription(ValueDescription valueDescription){
+        if(mValueDescriptions == null){
+            mValueDescriptions = new ArrayList<>();
+        }
+        mValueDescriptions.add(valueDescription);
     }
 }

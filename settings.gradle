@@ -1,3 +1,4 @@
-include ':app', ':commonservice', ':mobilecommonui', ':baseservice', ':funccomponent', ':material-spinner-1.0.5', ':annotation', ':compiler'
+include ':app', ':commonservice', ':mobilecommonui', ':baseservice', ':funccomponent', ':material-spinner-1.0.5',
+        ':annotation', ':compiler', ':h5container'
 
 include ':NetworkLibraries/volley'

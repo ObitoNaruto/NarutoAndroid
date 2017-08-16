@@ -15,24 +15,12 @@
             <option value="$PROJECT_DIR$/commonservice" />
             <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/funccomponent" />
+            <option value="$PROJECT_DIR$/h5container" />
             <option value="$PROJECT_DIR$/material-spinner-1.0.5" />
             <option value="$PROJECT_DIR$/mobilecommonui" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/NetworkLibraries/volley" />
-            <option value="$PROJECT_DIR$/annotation" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/baseservice" />
-            <option value="$PROJECT_DIR$/commonservice" />
-            <option value="$PROJECT_DIR$/compiler" />
-            <option value="$PROJECT_DIR$/funccomponent" />
-            <option value="$PROJECT_DIR$/material-spinner-1.0.5" />
-            <option value="$PROJECT_DIR$/mobilecommonui" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

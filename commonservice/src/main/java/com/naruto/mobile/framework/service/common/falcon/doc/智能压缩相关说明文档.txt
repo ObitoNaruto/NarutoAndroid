@@ -1,0 +1,82 @@
+
+依赖说明
+	编译的时候依赖
+	 <groupId>com.alipay.android.phone.falcon</groupId>
+ 	  <artifactId>falcon-biz</artifactId>
+  	 <version>1.0.0</version> 
+
+
+	打包的时候 需要 依赖    build里面有 需要的so文件
+ 	<groupId>com.alipay.android.phone.falcon</groupId>
+  	 <artifactId>falcon-build</artifactId>
+  	 <version>1.0.0</version>
+
+
+注意事项：
+	所有接口均非静态实现，需要new
+
+	so库名称   libFalconImg.so
+
+	使用之前首先调用  JniFalconImg.initJni(); 该函数加载so库，     JniFalconImg.java 为Jni 接口类 
+
+
+
+接口说明文档
+
+1、类名：FalconImgICompress
+/**智能压缩图片
+ * @param file			File file,文件流
+ * @param level			压缩质量，0-低质量，1-中质量，>=2-高质量
+ * @return				ByteArrayOutputStream数据流
+ */
+
+ 智能压缩 接口函数
+public ByteArrayOutputStream GenerateCompressImage(File file, int level)
+
+	当图片原始尺寸小于50k，返回该图像质量相当的流
+	当图片长或者宽中较大者大于1280，则将长边缩小到1280，然后进行智能压缩
+	当图片两边均小于1280，则直接进行智能压缩
+
+
+
+/**智能压缩图片，不变形，参数的宽高为缩放后最大的范围
+     * @param file         File file,文件流
+     * @param level         压缩质量，0-低质量，1-中质量，>=2-高质量
+     * @param newWidth       压缩后图片宽度
+     * @param newHeight      压缩后哦图片高度
+     * @return            ByteArrayOutputStream数据流
+     * @throws IOException
+     */
+       public ByteArrayOutputStream GenerateCompressImage(File file, int level, int newWidth, int newHeight) throws IOException
+
+
+
+
+2、类名：FalconImgPhotoWall
+	/**合成群头像
+	 * @param backgroundFile	背景图File流（background.png）
+	 * @param defaultImage		默认头像图File流(default.png)
+	 * @param file1				左上角位置头像File流（为null时画默认头像）
+	 * @param file2				右上角位置头像File流（为null时画默认头像）
+	 * @param file3				左下角位置头像File流（为null时画默认头像）
+	 * @param file4				右下角位置头像File流（为null时画默认头像）
+	 * @return
+	 */
+	public ByteArrayOutputStream combineImage(File backgroundFile, File defaultImage, File file1, File file2, File file3, File file4)
+
+
+
+
+3、类名：FalconImgResize
+	/**
+  	  * 等比缩放图片，若传入新的宽高与原图片宽高不一致，会等比缩放，宽高最大填充目标宽高
+  	  * @param file         图片文件
+   	 * @param newWidth      目标图片宽度
+  	  * @param newHeight    目标图片高度
+  	  * @return
+ 	   */
+ 	  public ByteArrayOutputStream resizeImage(File file, int newWidth, int newHeight)
+
+
+
+

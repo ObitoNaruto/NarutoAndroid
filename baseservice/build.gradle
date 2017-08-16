@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //在使用Android-async-http的时候我的apl 更新到了23，我的build version也是23的时候出现了，org.apache.http.Header这个类找不到的情况，原因是在api 23中，不提供org.apache.http.*(只保留几个类)
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -31,4 +34,8 @@ dependencies {
     compile project(':annotation')
     compile project(':NetworkLibraries/volley')
     compile 'com.google.code.gson:gson:2.2.4'
+//    compile project(path: ':commonservice')
+    compile 'com.alibaba:fastjson:1.2.35'
+//    compile project(path: ':commonservice')
+//    compile project(path: ':commonservice')
 }

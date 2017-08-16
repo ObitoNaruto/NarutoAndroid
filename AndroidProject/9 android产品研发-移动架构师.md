@@ -22,3 +22,10 @@
 
 ##8 MVP架构
 
+##9 数据库
+
+- OrmLite
+ 
+http://blog.csdn.net/qq_29375071/article/details/50469200
+http://blog.csdn.net/lmj623565791/article/details/39122981
+

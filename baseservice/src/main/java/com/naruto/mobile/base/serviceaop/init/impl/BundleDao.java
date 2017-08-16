@@ -15,6 +15,9 @@ public class BundleDao {
         Bundle commonserviceBundle = new Bundle("commonservice", false, "com.naruto.mobile.framework");
         list.add(commonserviceBundle);
 
+        Bundle h5ServiceBundle = new Bundle("h5ServiceDemo", false,  "com.naruto.mobile.h5container");
+        list.add(h5ServiceBundle);
+
         return list;
     }
 }

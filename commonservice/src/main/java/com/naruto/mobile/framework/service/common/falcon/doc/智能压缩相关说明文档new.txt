@@ -1,0 +1,51 @@
+一、图像压缩
+类：	FalconImgICompress
+接口：	/**智能压缩图片，当图片尺寸过大时，会等比例缩图
+	 * @param image				图片数据流，支持jpg、png、bmp， 其他类型返回原文件流
+	 * @param level				图片压缩级别，0--低，1--中，2--高
+	 * @return				压缩之后的数据流
+	 * @throws IOException
+	 */
+    	public ByteArrayOutputStream GenerateCompressImage(byte[] image, int level) throws IOException
+
+
+ 	/**智能压缩图片，指定压缩之后的宽高，指定宽高过大时采用默认宽高，等比缩放
+         * @param image				图片数据流，支持jpg、png、bmp， 其他类型返回原文件流
+         * @param level				图片压缩级别，0--低，1--中，2--高
+         * @param newWidth			指定压缩后的最大宽度
+         * @param newHeight			指定压缩后的最大高度
+         * @return					压缩之后的数据流
+         * @throws IOException
+         */
+    	public ByteArrayOutputStream GenerateCompressImage(byte[] image, int level, int newWidth, int newHeight) throws IOException
+        
+
+二、缩放图片
+类：	FalconImgResize
+接口：
+	/**
+     * 等比例缩图，指定宽高，若指定的宽高大于默认值，则采用默认值
+     * @param image				图片数据流，支持jpg,png,bmp
+     * @param newWidth			指定最大宽度
+     * @param newHeight			指定最大高度
+     * @return					缩图之后的数据流，jpg,png,bmp输入流返回jpeg图片，其他输入流返回原数据流
+     * @throws IOException
+     */
+    public ByteArrayOutputStream resizeImage(byte[] image, int newWidth, int newHeight) throws IOException
+
+三、合成图片
+类：	FalconImgPhotoWall
+接口：	
+/**
+	 * 把4张头像合并成一个头像，排列在正方形4个角
+	 * 头像数据流支持 jpg、bmp、png，背景图和默认头像必须 !=null，  第1-4个头像可以为null
+	 * @param bgByte			背景图数据流
+	 * @param defaultByte		默认头像数据流
+	 * @param p1Byte			第1个头像数据流
+	 * @param p2Byte			第2个头像数据流
+	 * @param p3Byte			第3个头像数据流
+	 * @param p4Byte			第4个头像数据流
+	 * @return				合成的图片的数据流
+	 */
+	public ByteArrayOutputStream combineImage(byte[] bgByte, byte[] defaultByte, byte[] p1Byte, byte[] p2Byte, byte[] p3Byte, byte[] p4Byte)
+	

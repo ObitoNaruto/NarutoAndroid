@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_24">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="text_light_gray_24" parent="text_24">
+        <item name="android:textColor">@color/colorLightGray</item>
+    </style>
+
+    <!-- 废弃 次按钮同次次按钮-->
+    <style name="subButtonStyle" >
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textSize">18.7sp</item>
+        <item name="android:textColor">@drawable/subsub_btn_color</item>
+        <item name="android:background">@drawable/sub_button_sub</item>
+    </style>
+</resources>

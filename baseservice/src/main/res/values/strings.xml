@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">baseservice</string>
+    <string name="flow_network_error">网络不给力&lt;br/&gt;请查看网络设置或稍后重试</string>
+    <string name="flow_network_check">请查看网络设置或稍后重试</string>
+    <string name="tryAgin">重新尝试</string>
+
+    <string name="confirm">确定</string>
+    <string name="loading">加载中</string>
+    <string name="no_data">暂无数据</string>
+    <string name="no_network">网络无法连接</string>
+    <string name="slow_network">网络不给力</string>
+    <string name="no_network_sub">请查看网络设置或稍后重试</string>
+    <string name="system_fail">糟糕，好像出错了</string>
+    <string name="system_fail_sub">服务器繁忙，请稍后重试</string>
 </resources>

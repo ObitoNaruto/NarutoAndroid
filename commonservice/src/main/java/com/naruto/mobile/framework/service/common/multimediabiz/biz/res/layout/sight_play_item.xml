@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingLeft="0dp"
+	android:paddingRight="0dp"
+	android:paddingTop="20dp"
+	android:paddingBottom="20dp">
+
+	<tv.danmaku.ijk.media.widget.SightPlayViewImpl
+	    android:id="@+id/play_view"
+	    android:layout_width="240dp"
+	    android:layout_height="180dp"
+	    android:layout_centerInParent="true"
+	    />
+		<ImageView
+	    android:id="@+id/thumb_view"
+	    android:layout_width="240dp"
+	    android:layout_height="180dp"
+	    android:visibility="invisible"
+	    android:scaleType="fitXY"
+	    android:layout_centerInParent="true"
+	    />
+		
+		
+			<TextView
+			    android:textStyle="bold"
+			    android:gravity="center"
+			    android:textColor="#ffff0000"
+	    android:id="@+id/progress"
+	    android:text="0%"
+	    android:layout_width="240dp"
+	    android:layout_height="180dp"
+	    android:layout_centerInParent="true"
+	    android:textSize="30dp"/>
+</RelativeLayout>
