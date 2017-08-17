@@ -15,6 +15,7 @@ android {
     buildTypes {
 
         debug {
+            module
             buildConfigField "boolean", "LOG_DEBUG", "true" //此处定义会在BuildConfig中
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

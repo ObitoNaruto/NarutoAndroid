@@ -3,7 +3,9 @@ package com.naruto.mobile.base.serviceaop.service.impl;
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
 import com.naruto.mobile.base.serviceaop.demo.service.InnerTxtService;
+import com.naruto.mobile.base.serviceaop.demo.service.TaskScheduleService;
 import com.naruto.mobile.base.serviceaop.demo.service.impl.InnerTxtServiceImpl;
+import com.naruto.mobile.base.serviceaop.demo.service.impl.TaskScheduleServiceImpl;
 import com.naruto.mobile.base.serviceaop.service.MicroService;
 import com.naruto.mobile.base.serviceaop.service.ServicesLoader;
 
@@ -34,6 +36,8 @@ public class CommonServiceLoadAgent implements ServicesLoader {
 
         //初始化各种服务
         registerService(InnerTxtService.class.getName(), new InnerTxtServiceImpl());
+        registerService(TaskScheduleService.class.getName(), new TaskScheduleServiceImpl());
+
         //eg:
         //registerService(ExtTextService.class.getName(), new ExtTextServiceImpl());
 

@@ -4,6 +4,7 @@ package com.naruto.mobile.base.serviceaop;
 import android.app.Activity;
 
 import java.lang.ref.WeakReference;
+import com.naruto.mobile.base.threadpool.PipeLine;
 
 import com.naruto.mobile.base.serviceaop.service.ext.ExternalService;
 
@@ -64,6 +65,11 @@ public interface NarutoApplicationContext {
      * @return
      */
     <T extends ExternalService> T getExtServiceByInterface(String className);
+
+    <T extends PipeLine> T getPipelineByName(String pipeLineName, long pipeLineTimeout);
+
+
+    <T extends PipeLine> T getPipelineByName(String pipeLineName);
 
     /**
      * 销毁

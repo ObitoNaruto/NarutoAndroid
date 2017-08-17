@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.service.common;
+package com.naruto.mobile.base.serviceaop.demo.service;
 
 import android.os.Bundle;
 
@@ -8,14 +8,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import com.naruto.mobile.base.serviceaop.service.CommonService;
-import com.naruto.mobile.framework.common.threadpool.OrderedExecutor;
+import com.naruto.mobile.base.threadpool.OrderedExecutor;
 
 /**
  * 任务调度服务
  */
 public abstract class TaskScheduleService extends CommonService {
 
-    public static abstract class Transaction extends com.naruto.mobile.framework.common.threadpool.Transaction {
+    public static abstract class Transaction extends com.naruto.mobile.base.threadpool.Transaction {
     }
 
     /**

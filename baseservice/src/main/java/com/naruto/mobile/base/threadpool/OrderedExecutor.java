@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import java.util.HashMap;
 import java.util.LinkedList;

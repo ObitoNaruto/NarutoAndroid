@@ -28,10 +28,10 @@ public class MetaInfo extends BaseMetaInfo{
         addService(photoServiceServiceDescription);
 
         ServiceDescription multimiaServiceDescription = new ServiceDescription();
-        shortcutServiceDescription.setName("multimiaService");
-        shortcutServiceDescription.setClassName(MultimediaImageServiceImpl.class.getName());
-        shortcutServiceDescription.setInterfaceClass(MultimediaImageService.class.getName());
-        shortcutServiceDescription.setLazy(true);
+        multimiaServiceDescription.setName("multimiaService");
+        multimiaServiceDescription.setClassName(MultimediaImageServiceImpl.class.getName());
+        multimiaServiceDescription.setInterfaceClass(MultimediaImageService.class.getName());
+        multimiaServiceDescription.setLazy(true);
         addService(multimiaServiceDescription);
     }
 

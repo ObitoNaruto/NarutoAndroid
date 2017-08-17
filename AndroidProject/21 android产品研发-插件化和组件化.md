@@ -6,6 +6,13 @@
 1.Android彻底组件化方案实践
 http://www.jianshu.com/p/1b1d77f58e84
 
+代码解耦：module(ok)
+组件单独运行：配置切换成library和application(ok)
+组件的数据传输：通过面向服务的实现暴露service(ok)
+组件之间的UI跳转：URLRouter(ok)
+组件的生命周期：每个组件service有onCreate和onDestroy(ok)
+集成调试：组件开发OK后，打包成aar，上传到本地公共仓库(未完成)
+代码隔离：通过gradle插件保证只在assembleDebug或者assembleRelease的时候把aar引入进来(未完成)
 
 
 

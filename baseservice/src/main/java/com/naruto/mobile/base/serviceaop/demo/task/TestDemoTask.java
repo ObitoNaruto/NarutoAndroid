@@ -8,6 +8,7 @@ public class TestDemoTask implements Runnable {
     @Override
     public void run() {
         // TODO: 17-8-8 做一些异步的任务
-        Log.d(TAG, "框架内TestDemoTask called!");
+        Log.d("pipeLineTasks", "框架内TestDemoTask called!");
+
     }
 }

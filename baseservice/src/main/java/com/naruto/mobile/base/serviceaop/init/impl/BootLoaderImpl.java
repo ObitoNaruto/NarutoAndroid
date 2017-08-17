@@ -1,8 +1,10 @@
 package com.naruto.mobile.base.serviceaop.init.impl;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.webkit.CookieSyncManager;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
 import com.naruto.mobile.base.serviceaop.init.BootLoader;
+import com.naruto.mobile.base.serviceaop.msg.MsgCodeConstants;
 import com.naruto.mobile.base.serviceaop.service.ServicesLoader;
 import com.naruto.mobile.base.serviceaop.service.ext.ExternalServiceManager;
 import com.naruto.mobile.base.serviceaop.service.ext.ExternalServiceManagerImpl;
@@ -91,5 +94,12 @@ public class BootLoaderImpl implements BootLoader {
 
             new BundleLoadHelper(this).loadBundleDefinitions();//load其他bundle(Module)中的服务
         }
+
+        // 初始化完成
+        Intent intent = new Intent();
+        intent.setAction(MsgCodeConstants.FRAMEWORK_INITED);
+        LocalBroadcastManager.getInstance(
+                mNarutoApplicaitonContext.getApplicationContext())
+                .sendBroadcast(intent);
     }
 }

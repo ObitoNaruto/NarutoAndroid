@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import java.util.concurrent.Executor;
 
@@ -24,6 +24,8 @@ public interface PipeLine {
      * @param wight         The task's wight
      */
     void addTask(Runnable task, String threadName, int wight);
+
+    void addIdleListener(Runnable task);
 
     /**
      * Start to execute

@@ -2,6 +2,7 @@ package com.naruto.mobile.base.serviceaop.init.impl;
 
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
+import android.text.TextUtils;
 import android.util.Log;
 
 
@@ -11,10 +12,13 @@ import com.naruto.mobile.base.log.logging.LogCatLog;
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
 import com.naruto.mobile.base.serviceaop.broadcast.BroadcastReceiverDescription;
 import com.naruto.mobile.base.serviceaop.broadcast.LocalBroadcastManagerWrapper;
+import com.naruto.mobile.base.serviceaop.demo.task.PipeLineServiceValueManager;
 import com.naruto.mobile.base.serviceaop.init.BootLoader;
+import com.naruto.mobile.base.serviceaop.msg.MsgCodeConstants;
 import com.naruto.mobile.base.serviceaop.service.BaseMetaInfo;
 import com.naruto.mobile.base.serviceaop.service.ServiceDescription;
 import com.naruto.mobile.base.serviceaop.service.ext.ExternalServiceManager;
+import com.naruto.mobile.base.serviceaop.task.ValueDescription;
 
 /**
  * Created by xinming.xxm on 2016/5/15.
@@ -27,13 +31,16 @@ public class BundleLoadHelper {
     /**
      * 应用内广播管理器
      */
-    LocalBroadcastManagerWrapper mLocalBroadcastManagerWrapper;
+    private LocalBroadcastManagerWrapper mLocalBroadcastManagerWrapper;
+
+    private PipeLineServiceValueManager mPipeLineServiceValueManager;
 
     public BundleLoadHelper(BootLoader bootLoader){
         mBootLoader = bootLoader;
         mNarutoApplicationContext = mBootLoader.getContext();
         mExternalServiceManager = mNarutoApplicationContext.findServiceByInterface(ExternalServiceManager.class.getName());
         mLocalBroadcastManagerWrapper = mNarutoApplicationContext.findServiceByInterface(LocalBroadcastManagerWrapper.class.getName());
+        mPipeLineServiceValueManager = mNarutoApplicationContext.findServiceByInterface(PipeLineServiceValueManager.class.getName());
     }
 
     public void loadBundleDefinitions() {
@@ -66,8 +73,10 @@ public class BundleLoadHelper {
 
         // Load service
         List<ServiceDescription> services = baseMetaInfo.getServices();
+        Log.d("xxm", "BundleLoadHelper loadBundle services" + services);
         if (null != services && services.size() > 0) {
             for (ServiceDescription serviceDescription : services) {
+                Log.d("xxm", "BundleLoadHelper loadBundle serviceDescription" + serviceDescription.getClassName());
                 if (null == serviceDescription) {
                     continue;
                 }
@@ -75,6 +84,7 @@ public class BundleLoadHelper {
             }
         }
 
+        //load broadcast
         List<BroadcastReceiverDescription> broadcastReceivers = baseMetaInfo.getBroadcastReceivers();
         if (null != broadcastReceivers && broadcastReceivers.size() > 0) {
             for (BroadcastReceiverDescription broadcastReceiverDescription : broadcastReceivers) {
@@ -108,6 +118,38 @@ public class BundleLoadHelper {
             }
         }
 
-    }
+        //load PipeLine task
+        List<ValueDescription> pipeLineValueDescription = baseMetaInfo.getValueDescriptions();
+        if (pipeLineValueDescription != null) {
+            for (ValueDescription valueDescription : pipeLineValueDescription) {
+                if(TextUtils.isEmpty(valueDescription.getClassName())) {
+                    LogCatLog.e("BundleLoadHelper",
+                            "pkg:" + bundle.getPackageName()
+                                    + "的MetaInfo中存在className为空的ValueDescription！");
+                    continue;
+                }
 
+                if(TextUtils.isEmpty(valueDescription.getPipelingName())) {
+                    LogCatLog.e("BundleLoadHelper",
+                            "pkg:" + bundle.getPackageName()
+                                    + "的MetaInfo中存在PipelingName为空的ValueDescription！");
+                    continue;
+                }
+
+                Runnable task = null;
+                try{
+                    task = (Runnable)Class.forName(valueDescription.getClassName()).newInstance();
+                }catch (InstantiationException e){
+                    LogCatLog.printStackTraceAndMore(e);
+                }
+
+                if(task != null) {
+                    mPipeLineServiceValueManager.addTask(valueDescription.getPipelingName(), task, valueDescription.getThreadName(), valueDescription.getWeight());
+                }
+            }
+        }
+        //在合适的位置启动相关管道
+        mPipeLineServiceValueManager.start(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED);
+
+    }
 }

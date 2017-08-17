@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,7 +41,7 @@ public class NamedRunnable implements Runnable, Pool.Poolable {
                 namedRunnable = newObject(task, threadName, weight);
             } else {
                 Log.i(TAG, "NamedRunnablePool.obtain(): hit a cache NamedRunnable obj.");
-                namedRunnable = freeObjects.pop();
+                namedRunnable = freeObjects.pop();//获取双向队列的对头元素
                 namedRunnable.setTask(task);
                 namedRunnable.setThreadName(threadName);
                 namedRunnable.setWeight(weight);
@@ -78,7 +78,7 @@ public class NamedRunnable implements Runnable, Pool.Poolable {
         public synchronized void clear() {
             super.clear();
         }
-    };
+    }
 
     public static final NamedRunnablePool TASK_POOL = new NamedRunnablePool(8, 16);
 

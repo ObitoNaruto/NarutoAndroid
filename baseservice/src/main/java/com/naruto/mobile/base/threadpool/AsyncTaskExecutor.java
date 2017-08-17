@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import android.util.Log;
 

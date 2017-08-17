@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.naruto.mobile.base.serviceaop.NarutoApplication;
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
-import com.naruto.mobile.framework.service.common.TaskScheduleService;
+import com.naruto.mobile.base.serviceaop.demo.service.TaskScheduleService;
 import com.naruto.mobile.framework.service.common.TimerTaskService;
 
 public class TimerTaskServiceImpl extends TimerTaskService {

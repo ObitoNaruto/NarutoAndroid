@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import com.naruto.mobile.framework.rpc.myhttp.beehive.eventbus.EventBusManager;
 import com.naruto.mobile.framework.rpc.myhttp.common.RpcException;
-import com.naruto.mobile.framework.service.common.TaskScheduleService;
+import com.naruto.mobile.base.serviceaop.demo.service.TaskScheduleService;
 import com.naruto.mobile.framework.utils.DebugUtil;
 import com.naruto.mobile.framework.utils.ServiceUtil;
 

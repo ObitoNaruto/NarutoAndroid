@@ -1,4 +1,4 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import android.util.Log;
 
@@ -71,15 +71,26 @@ public class StandardPipeline implements PipeLine{
         addTask(_task);
     }
 
+    @Override
+    public void addIdleListener(Runnable task) {
+        if(task == null) {
+            stop();
+        }
+        NamedRunnable _task = NamedRunnable.TASK_POOL.obtain(task, null);
+        addTask(_task);
+    }
+
     public void addTask(final NamedRunnable task) {
         Log.v(TAG, "StandardPipeline.addTask()");
         if (null == mTasks) {
+            Log.v(TAG, "StandardPipeline.addTask(), mTasks:null");
             throw new RuntimeException("The StandardPipeline has already stopped.");
         } else {
             task.setScheduleNext(next);
             synchronized (mTasks) {
                 int index = 0;
                 if (!mTasks.isEmpty()) {
+                    //按权重排序
                     for (index = mTasks.size() - 1; index >= 0; index--) {
                         if (task.mWeight <= mTasks.get(index).mWeight) {
                             index += 1;
@@ -88,6 +99,8 @@ public class StandardPipeline implements PipeLine{
                     }
                     index = index < 0 ? 0 : index;
                 }
+                Log.v(TAG, "StandardPipeline.addTask(), add:" + task.toString());
+                //按权重排序插入到对应的位置
                 mTasks.add(index, task);
             }
         }

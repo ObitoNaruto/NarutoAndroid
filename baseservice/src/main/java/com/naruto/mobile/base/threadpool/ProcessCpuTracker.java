@@ -1,11 +1,12 @@
-package com.naruto.mobile.framework.common.threadpool;
+package com.naruto.mobile.base.threadpool;
 
 import android.util.Log;
+import android.os.Process;
 
 //import static android.os.Process.PROC_COMBINE;
 //import static android.os.Process.PROC_OUT_LONG;
 //import static android.os.Process.PROC_SPACE_TERM;
-import android.os.Process;
+
 
 public class ProcessCpuTracker {
 
