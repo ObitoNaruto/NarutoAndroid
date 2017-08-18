@@ -9,6 +9,7 @@ import com.naruto.mobile.base.serviceaop.demo.service.impl.ExtTextServiceImpl;
 import com.naruto.mobile.base.serviceaop.demo.task.CommonServiceValue;
 import com.naruto.mobile.base.serviceaop.demo.task.TestDemoTask;
 import com.naruto.mobile.base.serviceaop.demo.task.TestDemoTask2;
+import com.naruto.mobile.base.serviceaop.demo.task.TestDemoTask3;
 import com.naruto.mobile.base.serviceaop.msg.MsgCodeConstants;
 import com.naruto.mobile.base.serviceaop.service.BaseMetaInfo;
 import com.naruto.mobile.base.serviceaop.service.ServiceDescription;
@@ -57,6 +58,13 @@ public class MetaInfo extends BaseMetaInfo {
         testDemoValueDescription2.setPipelingName(MsgCodeConstants.PIPELINE_FRAMEWORK_CLIENT_STARTED);
         testDemoValueDescription2.setWeight(1);
         addValueDescription(testDemoValueDescription2);
+
+        ValueDescription testDemoValueDescription3 = new ValueDescription();
+        testDemoValueDescription3.setClassName(TestDemoTask3.class.getName());
+        testDemoValueDescription3.setThreadName("TestDemoTask3");
+        testDemoValueDescription3.setPipelingName(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED);
+        testDemoValueDescription3.setWeight(2);
+        addValueDescription(testDemoValueDescription3);
 
     }
 }

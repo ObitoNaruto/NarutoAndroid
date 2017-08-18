@@ -17,6 +17,7 @@ public class CommonServiceValue implements Runnable {
     private final static String TAG = CommonServiceValue.class.getSimpleName();
     @Override
     public void run() {
+        Log.d("pipeLineTasks", "框架内CommonServiceValue called!");
         NarutoApplicationContext narutoApplicationContext = NarutoApplication.getInstance().getNarutoApplicationContext();
 
         if(narutoApplicationContext == null){
@@ -37,6 +38,7 @@ public class CommonServiceValue implements Runnable {
 
             @Override
             public void run() {
+                Log.d("pipeLineTasks", "框架内CommonServiceValue:PIPELINE_FRAMEWORK_INITED called!");
                 taskScheduleService
                         .onPipelineFinished(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED);
                 pipeline_1.addIdleListener(null);
@@ -49,6 +51,7 @@ public class CommonServiceValue implements Runnable {
 
             @Override
             public void run() {
+                Log.d("pipeLineTasks", "框架内CommonServiceValue:PIPELINE_FRAMEWORK_CLIENT_STARTED called!");
                 taskScheduleService
                         .onPipelineFinished(MsgCodeConstants.PIPELINE_FRAMEWORK_CLIENT_STARTED);
                 pipeline_2.addIdleListener(null);
