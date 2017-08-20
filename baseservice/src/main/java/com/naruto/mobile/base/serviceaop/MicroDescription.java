@@ -6,6 +6,11 @@ package com.naruto.mobile.base.serviceaop;
 public abstract class MicroDescription {
 
     /**
+     * id
+     */
+    private String mAppId;
+
+    /**
      * 名字
      */
     private String mName;
@@ -13,6 +18,22 @@ public abstract class MicroDescription {
      * 类名
      */
     private String mClassName;
+
+    /**
+     * 是否是老业务app
+     */
+    private boolean isLagacyApp = false;
+
+
+    public String getAppId() {
+        return mAppId;
+    }
+
+    public MicroDescription setAppId(String mAppId) {
+        this.mAppId = mAppId;
+        return this;
+    }
+
 
     public String getName() {
         return mName;
@@ -29,6 +50,15 @@ public abstract class MicroDescription {
 
     public MicroDescription setClassName(String className) {
         mClassName = className;
+        return this;
+    }
+
+    public boolean isLagacyApp() {
+        return isLagacyApp;
+    }
+
+    public MicroDescription setLagacyApp(boolean lagacyApp) {
+        isLagacyApp = lagacyApp;
         return this;
     }
 }

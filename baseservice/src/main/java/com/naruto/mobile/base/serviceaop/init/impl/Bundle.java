@@ -4,8 +4,11 @@ package com.naruto.mobile.base.serviceaop.init.impl;
  * Created by xinming.xxm on 2016/5/15.
  */
 public class Bundle {
+    //app名称标识
     private String name;
+    //是否是主入口app
     private boolean entry;
+    //app的包名
     private String packageName;
 
     public Bundle() {

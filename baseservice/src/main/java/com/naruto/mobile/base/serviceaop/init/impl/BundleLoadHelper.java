@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.naruto.mobile.base.log.logging.LogCatLog;
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
+import com.naruto.mobile.base.serviceaop.app.ApplicationDescription;
+import com.naruto.mobile.base.serviceaop.app.service.ApplicationManager;
 import com.naruto.mobile.base.serviceaop.broadcast.BroadcastReceiverDescription;
 import com.naruto.mobile.base.serviceaop.broadcast.LocalBroadcastManagerWrapper;
 import com.naruto.mobile.base.serviceaop.demo.task.PipeLineServiceValueManager;
@@ -26,6 +28,7 @@ import com.naruto.mobile.base.serviceaop.task.ValueDescription;
 public class BundleLoadHelper {
     private BootLoader mBootLoader;
     private NarutoApplicationContext mNarutoApplicationContext;
+    private ApplicationManager mApplicationManager;
     private ExternalServiceManager mExternalServiceManager;
 
     /**
@@ -38,6 +41,7 @@ public class BundleLoadHelper {
     public BundleLoadHelper(BootLoader bootLoader){
         mBootLoader = bootLoader;
         mNarutoApplicationContext = mBootLoader.getContext();
+        mApplicationManager = mNarutoApplicationContext.findServiceByInterface(ApplicationManager.class.getName());
         mExternalServiceManager = mNarutoApplicationContext.findServiceByInterface(ExternalServiceManager.class.getName());
         mLocalBroadcastManagerWrapper = mNarutoApplicationContext.findServiceByInterface(LocalBroadcastManagerWrapper.class.getName());
         mPipeLineServiceValueManager = mNarutoApplicationContext.findServiceByInterface(PipeLineServiceValueManager.class.getName());
@@ -69,6 +73,20 @@ public class BundleLoadHelper {
 
         if (null == baseMetaInfo) {
             return;
+        }
+
+        // Load application
+        List<ApplicationDescription> apps = baseMetaInfo.getApplications();
+        if (null != apps && apps.size() > 0) {
+            Log.d("xxm", "BundleLoadHelper loadBundle ApplicationDescription" + apps);
+            mApplicationManager.addDescription(apps);
+            // 设置应用入口点
+            if (bundle.isEntry()) {
+                String entry = baseMetaInfo.getEntry();
+                if (null != entry) {
+                    mApplicationManager.setEntryAppName(entry);
+                }
+            }
         }
 
         // Load service

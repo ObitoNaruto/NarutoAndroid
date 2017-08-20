@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
+import com.naruto.mobile.base.serviceaop.app.ui.ActivityCollections;
 import com.naruto.mobile.base.serviceaop.init.BootLoader;
 import com.naruto.mobile.base.serviceaop.msg.MsgCodeConstants;
 import com.naruto.mobile.base.serviceaop.service.ServicesLoader;
@@ -71,6 +72,8 @@ public class BootLoaderImpl implements BootLoader {
         } catch (IllegalAccessException e) {
         }
 
+        ActivityCollections.createInstance();
+
         if (Runtime.getRuntime().availableProcessors() > 2) {//系统是多处理器时
 
             final HandlerThread loadServiceThread = new HandlerThread("name");
@@ -88,6 +91,7 @@ public class BootLoaderImpl implements BootLoader {
                     }
                 }
             });
+
 
 //            //初始化框架中提供的所有基础服务,这个可以弃用了
 //            new CommonServiceLoadHelper(this).loadServices();

@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/NetworkLibraries/volley/NetworkLibraries_volley.iml" filepath="$PROJECT_DIR$/NetworkLibraries/volley/NetworkLibraries_volley.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotation/annotation.iml" filepath="$PROJECT_DIR$/annotation/annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app2demo/app2demo.iml" filepath="$PROJECT_DIR$/app2demo/app2demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applauncher/applauncher.iml" filepath="$PROJECT_DIR$/applauncher/applauncher.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseservice/baseservice.iml" filepath="$PROJECT_DIR$/baseservice/baseservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonservice/commonservice.iml" filepath="$PROJECT_DIR$/commonservice/commonservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/compiler/compiler.iml" filepath="$PROJECT_DIR$/compiler/compiler.iml" />
