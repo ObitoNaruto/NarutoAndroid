@@ -32,8 +32,8 @@ public class ServiceManagerImpl implements ServiceManager {
      */
     public ServiceManagerImpl(){
         //初始化，线程安全
-        mServices = new ConcurrentHashMap<String, Object>();
-        mLazyServices = new ConcurrentHashMap<String, String>();
+        mServices = new ConcurrentHashMap<>();
+        mLazyServices = new ConcurrentHashMap<>();
     }
 
     @Override

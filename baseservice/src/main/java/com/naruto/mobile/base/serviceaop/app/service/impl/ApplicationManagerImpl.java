@@ -245,7 +245,7 @@ public class ApplicationManagerImpl implements ApplicationManager {
             app.destroy(params);
         } else {
             LogCatLog.d(TAG, "can't find App: " + targetId);
-//            throw new IllegalStateException("can't find App: " + targetId);
+            throw new IllegalStateException("can't find App: " + targetId);
         }
     }
 
@@ -384,7 +384,7 @@ public class ApplicationManagerImpl implements ApplicationManager {
     @Override
     public MicroApplication getTopRunningApp() {
         if (!mApps.isEmpty()) {
-            return mApps.peek();
+            return mApps.peek();//获取栈顶元素，但不出栈
         }
         return null;
     }

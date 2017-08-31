@@ -4,31 +4,37 @@ import com.naruto.mobile.base.serviceaop.MicroDescription;
 
 public class ValueDescription extends MicroDescription{
 
+    //线程名称
     private String mThreadName;
-    private String mPipelingName;
+    //管道名称,一般是自定义的
+    private String mPipeLineName;
+    //权重
     private int mWeight;
 
     public String getThreadName() {
         return mThreadName;
     }
 
-    public void setThreadName(String threadName) {
+    public ValueDescription setThreadName(String threadName) {
         mThreadName = threadName;
+        return this;
     }
 
-    public String getPipelingName() {
-        return mPipelingName;
+    public String getPipeLineName() {
+        return mPipeLineName;
     }
 
-    public void setPipelingName(String pipelingName) {
-        mPipelingName = pipelingName;
+    public ValueDescription setPipeLineName(String pipeLineName) {
+        mPipeLineName = pipeLineName;
+        return this;
     }
 
     public int getWeight() {
         return mWeight;
     }
 
-    public void setWeight(int weight) {
+    public ValueDescription setWeight(int weight) {
         mWeight = weight;
+        return this;
     }
 }

@@ -45,7 +45,6 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     private AtomicBoolean mInited = new AtomicBoolean(false);
 
-
     /**
      * android上下文
      */
@@ -73,39 +72,62 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     private PipeLineServiceValueManager mPipeLineServiceValueManager;
 
-
-        //这个是原装
-//    @Override
-//    public WeakReference<Activity> getTopActivity() {
-//        return new WeakReference<Activity>(mActiveActivity);
-//    }
-
     @Override
     public WeakReference<Activity> getTopActivity() {
-        try {
-            Class activityThreadClass = Class.forName("android.app.ActivityThread");
-            Object activityThread = activityThreadClass.getMethod("currentActivityThread")
-                    .invoke(null);
-            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
-            activitiesField.setAccessible(true);
-            ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
-            for (Object activityRecord : activities.values()) {
-                Class activityRecordClass = activityRecord.getClass();
-                Field pausedField = activityRecordClass.getDeclaredField("paused");
-                pausedField.setAccessible(true);
-                if (!pausedField.getBoolean(activityRecord)) {
-                    Field activityField = activityRecordClass.getDeclaredField("activity");
-                    activityField.setAccessible(true);
-                    mActiveActivity = (Activity) activityField.get(activityRecord);
-                    return new WeakReference<Activity>(mActiveActivity);
+        if(mActiveActivity == null) {
+            try {
+                Class activityThreadClass = Class.forName("android.app.ActivityThread");
+                Object activityThread = activityThreadClass.getMethod("currentActivityThread")
+                        .invoke(null);
+                Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
+                activitiesField.setAccessible(true);
+                ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
+                for (Object activityRecord : activities.values()) {
+                    Class activityRecordClass = activityRecord.getClass();
+                    Field pausedField = activityRecordClass.getDeclaredField("paused");
+                    pausedField.setAccessible(true);
+                    if (!pausedField.getBoolean(activityRecord)) {
+                        Field activityField = activityRecordClass.getDeclaredField("activity");
+                        activityField.setAccessible(true);
+                        mActiveActivity = (Activity) activityField.get(activityRecord);
+                        return new WeakReference<>(mActiveActivity);
+                    }
                 }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Didn't find the running activity");
+        }else{
+            return new WeakReference<>(mActiveActivity);
         }
-        throw new RuntimeException("Didn't find the running activity");
-
     }
+
+//    @Override
+//    public WeakReference<Activity> getTopActivity() {
+//        try {
+//            Class activityThreadClass = Class.forName("android.app.ActivityThread");
+//            Object activityThread = activityThreadClass.getMethod("currentActivityThread")
+//                    .invoke(null);
+//            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
+//            activitiesField.setAccessible(true);
+//            ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
+//            for (Object activityRecord : activities.values()) {
+//                Class activityRecordClass = activityRecord.getClass();
+//                Field pausedField = activityRecordClass.getDeclaredField("paused");
+//                pausedField.setAccessible(true);
+//                if (!pausedField.getBoolean(activityRecord)) {
+//                    Field activityField = activityRecordClass.getDeclaredField("activity");
+//                    activityField.setAccessible(true);
+//                    mActiveActivity = (Activity) activityField.get(activityRecord);
+//                    return new WeakReference<>(mActiveActivity);
+//                }
+//            }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        throw new RuntimeException("Didn't find the running activity");
+//
+//    }
 
     /**
      * 更新激活的Activity
@@ -114,7 +136,6 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
      */
     @Override
     public void updateActivity(Activity activity) {
-//        mActiveActivity = null;
         mActiveActivity = activity;
     }
 
@@ -134,12 +155,12 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
      * 初始化
      */
     private void init(){
+        //运行时异常拦截处理
 //        FrameworkExceptionHandler.getInstance().init(mApplication);
 
         //serviceManager初始化
         mServiceManager = new ServiceManagerImpl();
         mServiceManager.attachContext(this);//为服务管理器绑定项目上下文环境
-
 
          //AppManager初始化
         ApplicationManagerImpl applicationManager = new ApplicationManagerImpl();
@@ -151,7 +172,6 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
         mLocalBroadcastManagerWrapper = LocalBroadcastManagerWrapper.getInstance(mApplication);
         mServiceManager.registerService(LocalBroadcastManagerWrapper.class.getName(),
                 mLocalBroadcastManagerWrapper);
-
 
         //管道任务初始化
         mPipeLineServiceValueManager = PipeLineServiceValueManager.getInstance();
@@ -173,24 +193,24 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public <T> T findServiceByInterface(String className) {
-        if (null != mServiceManager) {
-            T t = mServiceManager.findServiceByInterface(className);
+        if (mServiceManager != null) {
+            T service = mServiceManager.findServiceByInterface(className);
             Log.d("xxm", "NarutoApplicationContextImpl findServiceByInterface called! current service=" + t);
-            if (null == t) {
-                t = (T) getExtServiceByInterface(className);
+            if (service == null) {
+                service = (T) getExtServiceByInterface(className);
             }
-            return t;
+            return service;
         }
         return null;
     }
 
     @Override
     public <T extends ExternalService> T getExtServiceByInterface(String className) {
-        if (null != mServiceManager) {
-            //ExternalServiceManager在Application中就加载了，具体在BootLoaderImple
+        if (mServiceManager != null) {
+            //ExternalServiceManager在Application中就加载了，具体在BootLoaderImpl
             ExternalServiceManager exm = mServiceManager
                     .findServiceByInterface(ExternalServiceManager.class.getName());
-            if (null != exm) {
+            if (exm != null) {
                 Log.d("xxm", "NarutoApplicationContextImpl getExtServiceByInterface called! ExternalServiceManager:" + exm);
                 return (T) exm.getExternalService(className);//外部扩展服务管理器去获得服务
             }
@@ -200,6 +220,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public <T extends PipeLine> T getPipelineByName(String pipeLineName, long pipeLineTimeout) {
+        // TODO: 17-8-23  
         return null;
     }
 
@@ -210,12 +231,12 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void startActivity(MicroApplication microApplication, String className) {
-        if(null==mActiveActivity)//mActiveActivity加载入口的app时，什么时机具体在哪更新这个数据
+        //mActiveActivity加载入口的app时，具体在Activity(必须继承BaseActivity)的onResume更新这个数据
+        if (mActiveActivity == null){
             return;
+        }
         if (microApplication instanceof ActivityApplication) {
-
             Class<?> clazz = getActivityClass(className);
-
             Intent intent = new Intent(mActiveActivity, clazz);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
             intent.putExtra("app_id", microApplication.getAppId());
@@ -228,9 +249,9 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void startActivity(MicroApplication microApplication, Intent intent) {
-        if(null==mActiveActivity)
+        if (mActiveActivity == null) {
             return;
-
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         intent.putExtra("app_id", microApplication.getAppId());
         microApplication.setIsPrevent(true);
@@ -263,19 +284,8 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
             public void run() {
                 try {
                     mApplicationManager.startApp(sourceAppId, targetAppId, params);
-
-//                    if ( targetAppId == AppId.MAP_ASSIST ){
-//	                    AlipayLogInfo logInfo = new AlipayLogInfo();
-//	            		logInfo.behaviourIdEnum = BehaviourIdEnum.OPENPAGE;
-//	            		logInfo.appID = AppId.MAP_ASSIST;
-//	            		logInfo.viewID = "LBSIndex";
-//	            		String biz = params != null ? params.getString("biz") : "";
-//	            		logInfo.extendParams = new String[] { "","",biz };
-//	            		AlipayLogAgent.writeLog(getApplicationContext(),logInfo);
-//                    }
-
                 } catch (AppLoadException e) {
-                    LogCatLog.e("MicroApplicationContextImpl", e);
+                    LogCatLog.e("NarutoApplicationContextImpl", e);
                 }
             }
         });
@@ -283,7 +293,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void finishApp(final String sourceAppId, final String targetAppId, final Bundle params) {
-        mHandler.post(new Runnable() {
+        mHandler.post(new Runnable() {//ui线程
             @Override
             public void run() {
                 mApplicationManager.finishApp(sourceAppId, targetAppId, params);
@@ -303,11 +313,11 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void startActivityForResult(MicroApplication microApplication, String className, int requestCode) {
-        if(null==mActiveActivity)
+        if(mActiveActivity == null) {
             return;
+        }
         if (microApplication instanceof ActivityApplication) {
             Class<?> clazz = getActivityClass(className);
-
             Intent intent = new Intent(mActiveActivity, clazz);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
             intent.putExtra("app_id", microApplication.getAppId());
@@ -320,9 +330,9 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void startActivityForResult(MicroApplication microApplication, Intent intent, int requestCode) {
-        if(null==mActiveActivity)
+        if (mActiveActivity == null) {
             return;
-
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         intent.putExtra("app_id", microApplication.getAppId());
         microApplication.setIsPrevent(true);
@@ -331,18 +341,18 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
     @Override
     public void startExtActivityForResult(MicroApplication microApplication, Intent intent, int requestCode) {
-        if(null==mActiveActivity)
+        if(mActiveActivity == null) {
             return;
-
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         mActiveActivity.startActivityForResult(intent, requestCode);
     }
 
     @Override
     public void startExtActivity(MicroApplication microApplication, Intent intent) {
-        if(null==mActiveActivity)
+        if(mActiveActivity == null){
             return;
-
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         mActiveActivity.startActivity(intent);
     }
@@ -366,7 +376,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
         // References from com.android.internal.os.RuntimeInit.java
         // public static void wtf(String tag, Throwable t)
 //        Process.killProcess(Process.myPid());
-        System.exit(10);
+//        System.exit(10);
     }
 
     @Override
@@ -473,5 +483,4 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
             mServiceManager.onDestroyService((MicroService) microContent);
         }
     }
-
 }

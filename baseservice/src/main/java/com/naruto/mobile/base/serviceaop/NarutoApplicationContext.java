@@ -1,19 +1,17 @@
 package com.naruto.mobile.base.serviceaop;
 
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.lang.ref.WeakReference;
-
 import com.naruto.mobile.base.serviceaop.app.AppLoadException;
 import com.naruto.mobile.base.serviceaop.app.ApplicationDescription;
 import com.naruto.mobile.base.serviceaop.app.MicroApplication;
+import com.naruto.mobile.base.serviceaop.service.ext.ExternalService;
 import com.naruto.mobile.base.threadpool.PipeLine;
 
-import com.naruto.mobile.base.serviceaop.service.ext.ExternalService;
+import java.lang.ref.WeakReference;
 
 /**
  * Created by xinming.xxm on 2016/5/13.
@@ -29,7 +27,7 @@ public interface NarutoApplicationContext {
 
     /**
      * 更新当前Activity
-     *
+     * 备注：所有的activity继承了BaseActivity，其onResume中进行了调用
      * @param activity Activity
      */
     void updateActivity(Activity activity);
@@ -55,7 +53,6 @@ public interface NarutoApplicationContext {
      */
     MicroApplication findTopRunningApp();
 
-
     /**
      * 注册服务
      *
@@ -66,6 +63,12 @@ public interface NarutoApplicationContext {
      */
     <T> boolean registerService(String className, T service);
 
+    /**
+     * 反注册服务
+     * @param interfaceName 服务接口类名
+     * @param <T>
+     * @return
+     */
     <T> T unregisterService(String interfaceName);
 
     /**
@@ -135,7 +138,11 @@ public interface NarutoApplicationContext {
      */
     MicroApplication findAppById(String appId);
 
-
+    /**
+     * 根据app id获取ApplicationDescription
+     * @param appId
+     * @return
+     */
     ApplicationDescription findDescriptionById(String appId);
 
     /**

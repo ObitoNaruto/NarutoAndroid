@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/h5container/h5container.iml" filepath="$PROJECT_DIR$/h5container/h5container.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" filepath="$PROJECT_DIR$/material-spinner-1.0.5/material-spinner-1.0.5.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" filepath="$PROJECT_DIR$/mobilecommonui/mobilecommonui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin/plugin.iml" filepath="$PROJECT_DIR$/plugin/plugin.iml" />
     </modules>
   </component>
 </project>

@@ -17,6 +17,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    //用于配置签名信息
+//    signingConfigs {
+//
+//    }
+//
+//    //可以根据dpi、abi进行分包
+//    splits {
+//
+//    }
+//
+//    //多渠道打包
+//    productFlavors {
+//
+////    }
+//
+//    //加速编译
+//    dexOptions {
+//
+//    }
 }
 
 dependencies {

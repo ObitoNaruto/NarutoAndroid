@@ -17,7 +17,6 @@ import java.util.Map;
 public class PipeLineServiceValueManager {
 
     private Map<String, PipeLine> mPipeLines;
-//    private PipeLine mPipeLine;
     private AsyncTaskExecutor mAsyncTaskExecutor;
 
     private static PipeLineServiceValueManager mInstance;
@@ -26,11 +25,10 @@ public class PipeLineServiceValueManager {
         mAsyncTaskExecutor = AsyncTaskExecutor.getInstance();
         mPipeLines = new HashMap<>();
         init();
-//        mPipeLine = new StandardPipeline(mAsyncTaskExecutor.getExecutor());
     }
 
     private void init() {
-        // TODO: 17-8-17 初始化多个管道
+        //初始化多个管道, 定义多少个管道由业务系统需求决定
         PipeLine pipeLine_1 = new StandardPipeline(mAsyncTaskExecutor.getExecutor());
         mPipeLines.put(MsgCodeConstants.PIPELINE_FRAMEWORK_INITED, pipeLine_1);
 
@@ -54,7 +52,6 @@ public class PipeLineServiceValueManager {
     public void addTask(String pipeLineName, Runnable task, String threadName, int weight) {
         Log.d("xxm", "Pipeline:" + getPipelineByName(pipeLineName) );
         getPipelineByName(pipeLineName).addTask(task, threadName, weight);
-//        mPipeLine.addTask(task, threadName, weight);
     }
 
     public PipeLine getPipelineByName(String pipeLineName) {
@@ -65,11 +62,5 @@ public class PipeLineServiceValueManager {
     public void start(String pipeLineName) {
         Log.d("xxm", "pipeLineName:" + pipeLineName );
         getPipelineByName(pipeLineName).start();
-    }
-
-    public void close() {
-//        if (mPipeLine != null) {
-//            mPipeLine.stop();
-//        }
     }
 }

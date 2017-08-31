@@ -6,16 +6,16 @@ package com.naruto.mobile.base.serviceaop;
 public abstract class MicroDescription {
 
     /**
-     * id
+     * app id
      */
     private String mAppId;
 
     /**
-     * 名字
+     * 服务名字
      */
     private String mName;
     /**
-     * 类名
+     * 服务实现类名
      */
     private String mClassName;
 
@@ -33,7 +33,6 @@ public abstract class MicroDescription {
         this.mAppId = mAppId;
         return this;
     }
-
 
     public String getName() {
         return mName;

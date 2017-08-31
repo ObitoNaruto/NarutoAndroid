@@ -8,7 +8,7 @@ import com.naruto.mobile.base.serviceaop.MicroDescription;
  */
 public class ServiceDescription extends MicroDescription {
     /**
-     * 服务接口
+     * 服务接口名称
      */
     private String mInterfaceClassName;
 
@@ -18,20 +18,21 @@ public class ServiceDescription extends MicroDescription {
      */
     private boolean isLazy = true;
 
-
     public boolean isLazy() {
         return isLazy;
     }
 
-    public void setLazy(boolean isLazy) {
+    public ServiceDescription setLazy(boolean isLazy) {
         this.isLazy = isLazy;
+        return this;
     }
 
     public String getInterfaceClass() {
         return mInterfaceClassName;
     }
 
-    public void setInterfaceClass(String interfaceClassName) {
-        mInterfaceClassName = interfaceClassName;
+    public ServiceDescription setInterfaceClass(String interfaceClassName) {
+        this.mInterfaceClassName = interfaceClassName;
+        return this;
     }
 }

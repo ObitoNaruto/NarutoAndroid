@@ -13,32 +13,29 @@ public class NarutoApplication extends Application {
     private static NarutoApplication mInstance;
 
     /**
-     *app上下文
+     * app上下文(自定义)
      */
     private NarutoApplicationContext mNarutoApplicationContext;
-
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;//android上下文初始化
-        try{
-            //NarutoApplicationContextImpl??NarutoApplicationContext???????
+        try {
+            //NarutoApplicationContextImpl初始化
             mNarutoApplicationContext = (NarutoApplicationContext) Class.forName("com.naruto.mobile.base.serviceaop.NarutoApplicationContextImpl").newInstance();
-            mNarutoApplicationContext.attachContext(this);//NarutoApplicationContext
-        }
-        catch (Exception e){
+            mNarutoApplicationContext.attachContext(this);//NarutoApplicationContext关联上Application上下文
+        } catch (Exception e) {
             Log.e("xxm", "NarutoApplicationContextImpl newInstance failed!", e);
             e.printStackTrace();
         }
-
     }
 
     public NarutoApplicationContext getNarutoApplicationContext() {
         return mNarutoApplicationContext;
     }
 
-    public static NarutoApplication getInstance(){
+    public static NarutoApplication getInstance() {
         return mInstance;
     }
 

@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/h5container" />
             <option value="$PROJECT_DIR$/material-spinner-1.0.5" />
             <option value="$PROJECT_DIR$/mobilecommonui" />
+            <option value="$PROJECT_DIR$/plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -2,10 +2,7 @@ package com.naruto.mobile.app2demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.naruto.mobile.base.serviceaop.NarutoApplication;
-import com.naruto.mobile.base.serviceaop.NarutoApplicationContext;
 import com.naruto.mobile.base.serviceaop.app.ui.BaseActivity;
 
 public class MainActivity extends BaseActivity {

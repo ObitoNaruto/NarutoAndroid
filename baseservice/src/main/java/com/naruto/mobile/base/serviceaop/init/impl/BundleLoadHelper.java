@@ -147,7 +147,7 @@ public class BundleLoadHelper {
                     continue;
                 }
 
-                if(TextUtils.isEmpty(valueDescription.getPipelingName())) {
+                if(TextUtils.isEmpty(valueDescription.getPipeLineName())) {
                     LogCatLog.e("BundleLoadHelper",
                             "pkg:" + bundle.getPackageName()
                                     + "的MetaInfo中存在PipelingName为空的ValueDescription！");
@@ -162,7 +162,7 @@ public class BundleLoadHelper {
                 }
 
                 if(task != null) {
-                    mPipeLineServiceValueManager.addTask(valueDescription.getPipelingName(), task, valueDescription.getThreadName(), valueDescription.getWeight());
+                    mPipeLineServiceValueManager.addTask(valueDescription.getPipeLineName(), task, valueDescription.getThreadName(), valueDescription.getWeight());
                 }
             }
         }
