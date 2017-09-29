@@ -1,5 +1,6 @@
 package com.naruto.mobile.base.serviceaop;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -73,8 +74,9 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     private PipeLineServiceValueManager mPipeLineServiceValueManager;
 
     @Override
+    @TargetApi(19)
     public WeakReference<Activity> getTopActivity() {
-        if(mActiveActivity == null) {
+        if (mActiveActivity == null) {
             try {
                 Class activityThreadClass = Class.forName("android.app.ActivityThread");
                 Object activityThread = activityThreadClass.getMethod("currentActivityThread")
@@ -97,7 +99,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
                 throw new RuntimeException(e);
             }
             throw new RuntimeException("Didn't find the running activity");
-        }else{
+        } else {
             return new WeakReference<>(mActiveActivity);
         }
     }
@@ -195,7 +197,6 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
     public <T> T findServiceByInterface(String className) {
         if (mServiceManager != null) {
             T service = mServiceManager.findServiceByInterface(className);
-            Log.d("xxm", "NarutoApplicationContextImpl findServiceByInterface called! current service=" + t);
             if (service == null) {
                 service = (T) getExtServiceByInterface(className);
             }
@@ -211,7 +212,6 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
             ExternalServiceManager exm = mServiceManager
                     .findServiceByInterface(ExternalServiceManager.class.getName());
             if (exm != null) {
-                Log.d("xxm", "NarutoApplicationContextImpl getExtServiceByInterface called! ExternalServiceManager:" + exm);
                 return (T) exm.getExternalService(className);//外部扩展服务管理器去获得服务
             }
         }

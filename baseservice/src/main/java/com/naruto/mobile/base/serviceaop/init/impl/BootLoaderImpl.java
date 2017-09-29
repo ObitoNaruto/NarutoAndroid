@@ -31,7 +31,7 @@ public class BootLoaderImpl implements BootLoader {
 
     public BootLoaderImpl(NarutoApplicationContext narutoApplicationContext){
         mNarutoApplicaitonContext = narutoApplicationContext;
-        mBundles = new ArrayList<Bundle>();
+        mBundles = new ArrayList<>();
     }
 
     @Override
@@ -45,21 +45,15 @@ public class BootLoaderImpl implements BootLoader {
 
         //读取metaData
         String agentCommonServiceLoad = null;
-//        String agentEntryPkgName = null;
-//        try {
-//            ApplicationInfo appInfo = application.getPackageManager().getApplicationInfo(application.getPackageName(), PackageManager.GET_META_DATA);
-//            agentCommonServiceLoad = appInfo.metaData.getString("agent.commonservice.load");
-//            agentEntryPkgName = appInfo.metaData.getString("agent.entry.pkgname");
-//        } catch (Exception e1) {
-//        }
 
         if (TextUtils.isEmpty(agentCommonServiceLoad)) {
             agentCommonServiceLoad = "com.naruto.mobile.base.serviceaop.service.impl.CommonServiceLoadAgent";
         }
 
-        //step1. 首先初始化外部服务管理
+        //step1. 首先初始化外部服务管理,这个服务可重要
         ExternalServiceManager externalServiceManager = new ExternalServiceManagerImpl();
         externalServiceManager.attachContext(mNarutoApplicaitonContext);//绑定项目上下文
+        //这里必须注册ExternalServiceManager服务，否则所有的扩展服务都不能被初始化
         mNarutoApplicaitonContext.registerService(ExternalServiceManager.class.getName(), externalServiceManager);
 
         //step2. 然后初始化框架中提供的所有基础服务
@@ -92,11 +86,8 @@ public class BootLoaderImpl implements BootLoader {
                 }
             });
 
-
-//            //初始化框架中提供的所有基础服务,这个可以弃用了
-//            new CommonServiceLoadHelper(this).loadServices();
-
-            new BundleLoadHelper(this).loadBundleDefinitions();//load其他bundle(Module)中的服务
+            //load其他bundle(Module)中的服务,这里加载的服务都是懒加载的服务
+            new BundleLoadHelper(this).loadBundleDefinitions();
         }
 
         // 初始化完成

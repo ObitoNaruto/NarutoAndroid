@@ -35,11 +35,19 @@ http://blog.csdn.net/acmman/article/details/50848595
 代码隔离：通过gradle插件保证只在assembleDebug或者assembleRelease的时候把aar引入进来(未完成)<br>
 
 
+## 当前开源插件化解决方案
 
+1 Atlas
 
+http://atlas.taobao.org/docs/update/
 
+https://github.com/alibaba/atlas
 
+blog:
 
+http://www.jianshu.com/p/f1f471f98d08?from=groupmessage
+
+http://www.jianshu.com/p/74d4fc2a3673
 
 
 

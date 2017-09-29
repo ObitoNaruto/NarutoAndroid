@@ -2,7 +2,6 @@ package com.naruto.mobile.base.serviceaop.service.impl;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.Log;
 
 
 import java.util.Map;
@@ -19,6 +18,7 @@ import com.naruto.mobile.base.serviceaop.service.ServiceManager;
  */
 public class ServiceManagerImpl implements ServiceManager {
 
+    //当前项目上下文
     private NarutoApplicationContext mNarutoApplication;
 
     /**
@@ -38,50 +38,56 @@ public class ServiceManagerImpl implements ServiceManager {
 
     @Override
     public void attachContext(NarutoApplicationContext applicationContext) {
+        //附着app上下文
         mNarutoApplication = applicationContext;
     }
 
     @Override
     public <T> boolean registerService(String className, T service) {
+        //已被实例化的服务
         if (service instanceof MicroService) {
-            return null == mServices.put(className, service);
+            return mServices.put(className, service) != null;
         } else if (service instanceof String) {
-            return null == mLazyServices.put(className, (String)service);
+            //还未被实例化的服务
+            return mLazyServices.put(className, (String) service) != null;
         } else { // 未知类型
-            return null == mServices.put(className, service);
+            return mServices.put(className, service) != null;
         }
     }
 
     @Override
     public <T> T findServiceByInterface(String className) {
+        //内存缓存中已经包含待查找的服务，取出直接返回
         if (mServices.containsKey(className)) {
-            Log.d("xxm", "ServiceManagerImpl findServiceByInterface called! mServices contains " + className);
             return (T) mServices.get(className);
-        } else if (mLazyServices.containsKey(className)) {
-            String defaultClassName = mLazyServices.get(className);
-            if (TextUtils.isEmpty(defaultClassName)) {
+        } else if (mLazyServices.containsKey(className)) {//懒加载的服务
+            String serviceClassName = mLazyServices.get(className);
+            if (TextUtils.isEmpty(serviceClassName)) {
                 return null;
             }
-            Log.d("xxm", "ServiceManagerImpl findServiceByInterface called! mLazyServices contains " + className);
-            synchronized (defaultClassName) {
+            synchronized (serviceClassName) {
                 // check service again for synchronized
                 if (mServices.containsKey(className)) {
                     return (T) mServices.get(className);
                 }
-
+                //约定好，外部扩展服务都是CommonService类型服务
                 CommonService service = null;
                 try {
+                    //通过当前上下文的classLoader获取Class对象
                     Class<?> clazz = mNarutoApplication
                             .getApplicationContext()
                             .getClassLoader()
-                            .loadClass(defaultClassName);
+                            .loadClass(serviceClassName);
+                    //通过反射进行服务的初始化
                     service = (CommonService) clazz.newInstance();
                 } catch (ClassNotFoundException e) {
                 } catch (InstantiationException e) {
                 } catch (IllegalAccessException e) {
                 }
                 if (service != null) {
+                    //为服务注入项目上下文环境
                     service.attachContext(mNarutoApplication);
+                    //将初始化后的服务内存缓存起来
                     mServices.put(className, service);
                 }
                 return (T) service;

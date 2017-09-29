@@ -52,23 +52,26 @@ public class ExternalServiceManagerImpl extends ExternalServiceManager{
     @Override
     public ExternalService getExternalService(String className) {
         ExternalService extService = createdExtServices.get(className);
-        if(null == extService){
-            //外部服务都在MetaInfo中进行注册了,具体在BundleLoadHelper中进行的各个module中metaInfo的注册
+        if (extService == null) {
+            //外部服务(懒加载类型服务)都在MetaInfo中进行注册了,具体在BundleLoadHelper中进行的各个module中metaInfo的注册
             ServiceDescription description = regiestedExtServices.get(className);
-            if(null == description){
+            if (description == null) {
                 return null;
             }
-            Log.d("xxm", "ExternalServicManagerImpl getExternalService called! ServiceDescription:" + description);
-            synchronized (description){
-                try{
+            synchronized (description) {
+                try {
+                    //这里的className就是具体实现的服务类名
                     Class<?> clazz = Class.forName(description.getClassName());
-                    extService = (ExternalService)clazz.newInstance();
+                    //对象初始化
+                    extService = (ExternalService) clazz.newInstance();
+                    //上下文注入
                     extService.attachContext(getNarutoApplicationContext());
+                    //服务初始化，具体服务会回调onCreate方法
                     extService.create(null);
-                }
-                catch (Throwable e){
+                } catch (Throwable e) {
                     return null;
                 }
+                //内存缓存起来
                 createdExtServices.put(description.getInterfaceClass(), extService);
             }
         }

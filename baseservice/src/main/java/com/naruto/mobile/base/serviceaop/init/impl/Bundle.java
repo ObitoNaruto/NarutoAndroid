@@ -15,8 +15,6 @@ public class Bundle {
     }
 
     public Bundle(String name, boolean entry, String packageName) {
-        super();
-
         this.name = name;
         this.entry = entry;
         this.packageName = packageName;
