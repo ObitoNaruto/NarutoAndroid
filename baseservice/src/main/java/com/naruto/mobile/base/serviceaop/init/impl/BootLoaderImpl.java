@@ -77,6 +77,8 @@ public class BootLoaderImpl implements BootLoader {
             handler.post(new Runnable() {
                 public void run() {
                     try {
+                        //WebView利用CookieSyncManager获取活设置Cookies的策略
+                        //http://blog.csdn.net/stzy00/article/details/50586979
                         CookieSyncManager.createInstance(mNarutoApplicaitonContext.getApplicationContext());
                     } catch (Throwable e) {
                     }

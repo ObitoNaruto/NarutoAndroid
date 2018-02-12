@@ -15,6 +15,7 @@ public class LocalBroadcastManagerWrapper {
      */
     private List<BroadcastReceiver> mReceivers;
 
+    //android系统广播管理器
     private static LocalBroadcastManager mLocalBroadcastManager;
 
     private static LocalBroadcastManagerWrapper mInstance;
@@ -31,15 +32,27 @@ public class LocalBroadcastManagerWrapper {
         return mInstance;
     }
 
+    /**
+     * 注册广播
+     */
     public void registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        //内存缓存广播接收者
         mReceivers.add(receiver);
+        //注册广播接收者
         mLocalBroadcastManager.registerReceiver(receiver, filter);
     }
 
+    /**
+     * 反注册广播接收者
+     * @param receiver
+     */
     public void unregisterReceiver(BroadcastReceiver receiver) {
         mLocalBroadcastManager.unregisterReceiver(receiver);
     }
 
+    /**
+     * 反注册框架中所有的广播接收者
+     */
     public void close() {
         for (BroadcastReceiver receiver : mReceivers) {
             if (receiver != null) {

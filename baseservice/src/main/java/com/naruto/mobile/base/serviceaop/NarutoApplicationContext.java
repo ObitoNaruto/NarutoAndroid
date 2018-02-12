@@ -3,6 +3,7 @@ package com.naruto.mobile.base.serviceaop;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.naruto.mobile.base.serviceaop.app.AppLoadException;
@@ -295,4 +296,8 @@ public interface NarutoApplicationContext {
      * @return 是否已经初始化
      */
     boolean hasInited();
+
+    void loadBundle(String bundleName);
+
+    Resources getResourcesByBundle(String bundleName);
 }

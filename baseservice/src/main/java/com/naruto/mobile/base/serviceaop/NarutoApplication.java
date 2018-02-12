@@ -20,8 +20,11 @@ public class NarutoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mInstance = this;//android上下文初始化
+        //android上下文初始化
+        mInstance = this;
         try {
+            //这么做是为了满足单一原则，NarutoApplicationContext维护了扩展的android服务管理
+            //反射形式生成对象目的：规避库循环引用的问题
             //NarutoApplicationContextImpl初始化
             mNarutoApplicationContext = (NarutoApplicationContext) Class.forName("com.naruto.mobile.base.serviceaop.NarutoApplicationContextImpl").newInstance();
             mNarutoApplicationContext.attachContext(this);//NarutoApplicationContext关联上Application上下文

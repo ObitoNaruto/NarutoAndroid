@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,6 +27,7 @@ import com.naruto.mobile.base.serviceaop.app.service.ApplicationManager;
 import com.naruto.mobile.base.serviceaop.app.service.impl.ApplicationManagerImpl;
 import com.naruto.mobile.base.serviceaop.app.ui.ActivityResponsable;
 import com.naruto.mobile.base.serviceaop.demo.task.PipeLineServiceValueManager;
+import com.naruto.mobile.base.serviceaop.exception.FrameworkExceptionHandler;
 import com.naruto.mobile.base.threadpool.PipeLine;
 
 import com.naruto.mobile.base.serviceaop.broadcast.LocalBroadcastManagerWrapper;
@@ -106,29 +108,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
 
 //    @Override
 //    public WeakReference<Activity> getTopActivity() {
-//        try {
-//            Class activityThreadClass = Class.forName("android.app.ActivityThread");
-//            Object activityThread = activityThreadClass.getMethod("currentActivityThread")
-//                    .invoke(null);
-//            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
-//            activitiesField.setAccessible(true);
-//            ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
-//            for (Object activityRecord : activities.values()) {
-//                Class activityRecordClass = activityRecord.getClass();
-//                Field pausedField = activityRecordClass.getDeclaredField("paused");
-//                pausedField.setAccessible(true);
-//                if (!pausedField.getBoolean(activityRecord)) {
-//                    Field activityField = activityRecordClass.getDeclaredField("activity");
-//                    activityField.setAccessible(true);
-//                    mActiveActivity = (Activity) activityField.get(activityRecord);
-//                    return new WeakReference<>(mActiveActivity);
-//                }
-//            }
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        throw new RuntimeException("Didn't find the running activity");
-//
+//        return new WeakReference<Activity>(mActiveActivity);
 //    }
 
     /**
@@ -157,10 +137,10 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
      * 初始化
      */
     private void init(){
-        //运行时异常拦截处理
-//        FrameworkExceptionHandler.getInstance().init(mApplication);
+        //运行时异常拦截处理(未实现)
+        FrameworkExceptionHandler.getInstance().init(mApplication);
 
-        //serviceManager初始化
+        //serviceManager初始化(用户管理各种扩展的service)
         mServiceManager = new ServiceManagerImpl();
         mServiceManager.attachContext(this);//为服务管理器绑定项目上下文环境
 
@@ -364,6 +344,7 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
         mApplicationManager.exit();
         clearState();
 
+
         //清除信息
 //        AlipayLogAgent.unInitClient();
 
@@ -482,5 +463,15 @@ public class NarutoApplicationContextImpl implements NarutoApplicationContext{
         if (microContent instanceof MicroService) {
             mServiceManager.onDestroyService((MicroService) microContent);
         }
+    }
+
+    @Override
+    public void loadBundle(String bundleName) {
+        // TODO: 18-1-30 加载某个bundle
+    }
+
+    @Override
+    public Resources getResourcesByBundle(String bundleName) {
+        return null;
     }
 }

@@ -70,7 +70,7 @@ public class ServiceManagerImpl implements ServiceManager {
                 if (mServices.containsKey(className)) {
                     return (T) mServices.get(className);
                 }
-                //约定好，外部扩展服务都是CommonService类型服务
+                //约定好，外部扩展服务都是CommonService类型服务,内部服务都已经初始化了且存在于内存了
                 CommonService service = null;
                 try {
                     //通过当前上下文的classLoader获取Class对象

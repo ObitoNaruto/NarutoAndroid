@@ -33,11 +33,14 @@ public class ExternalServiceManagerImpl extends ExternalServiceManager{
         if(null == serviceDescription){
             return;
         }
+        //已经注册过，直接返回
         if(regiestedExtServices.containsKey(serviceDescription.getInterfaceClass())){
             return;
         }
 
+
         if(!serviceDescription.isLazy()){
+            //非懒加载服务，直接创建服务，初始化
             boolean result = createExternalService(serviceDescription);
             if(result){
                 registerExternalServiceOnly(serviceDescription);

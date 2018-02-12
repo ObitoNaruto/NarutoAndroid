@@ -41,6 +41,8 @@ public class ApplicationManagerImpl implements ApplicationManager {
     private Stack<MicroApplication> mApps;
     /**
      * 应用映射
+     * key:appId
+     * value:MicroApplication
      */
     private Map<String, MicroApplication> mAppsMap;
     /**
@@ -70,16 +72,17 @@ public class ApplicationManagerImpl implements ApplicationManager {
         }
         LogCatLog.v(TAG, "startApp() sourceAppId: " + sourceAppId + " targetAppId: " + targetAppId + " currentThread: " + Thread.currentThread().getId());
 
+        //判断源app合法性：源app还未初始化
         if (!mAppsMap.containsKey(sourceAppId)) {
             LogCatLog.w(TAG, sourceAppId + " is not a App or had not start up");
         }
-
+        //目标app已经初始化过
         if (mAppsMap.containsKey(targetAppId)) {
             doRestart(targetAppId, params);
             return;
         }
 
-        //优先以apk方式启动
+        //优先以apk方式启动：这种方式被废弃
         if (startApkApp(sourceAppId, targetAppId, params)) {
             return;
         }
@@ -89,7 +92,7 @@ public class ApplicationManagerImpl implements ApplicationManager {
             return;
         }
 
-        //以webapp方式启动
+        //以webapp方式启动:这种方式也基本被废弃
         if (startWebApp(sourceAppId, targetAppId, params)) {
             return;
         }
@@ -113,13 +116,23 @@ public class ApplicationManagerImpl implements ApplicationManager {
         return false;
     }
 
+    /**
+     * 这个方法很好，模仿了android的activity的生命周期执行逻辑
+     * @param sourceAppId
+     * @param targetAppId
+     * @param params
+     * @return
+     */
     private boolean startNativeApp(String sourceAppId, String targetAppId, Bundle params) {
+        //获取目的应用描述
         ApplicationDescription targetAppDescription = findDescriptionById(targetAppId);
         //非老业务
         if (targetAppDescription != null && !targetAppDescription.isLagacyApp()) {
             MicroApplication app;
             try {
+                //获取目的应用实例
                 app = createNativeApp(targetAppDescription, params);
+                //此时目的应用变成源应用
                 app.setSourceId(sourceAppId);
                 LogCatLog.v(TAG, "createApp() completed: " + targetAppId);
 
@@ -181,19 +194,23 @@ public class ApplicationManagerImpl implements ApplicationManager {
         LogCatLog.v(TAG, "doRestart() targetAppId: " + targetAppId);
         MicroApplication app = mAppsMap.get(targetAppId);
         MicroApplication tmp = null;
+        //出栈
         while (app != (tmp = mApps.peek())) {
             mApps.pop();
             LogCatLog.v(TAG, "doRestart() pop appId: " + tmp.getAppId());
             tmp.destroy(params);
         }
+        //目标app ：restart
         app.restart(params);
     }
 
     private MicroApplication createNativeApp(ApplicationDescription targetAppDes, Bundle params)
             throws AppLoadException {
         Object object;
+        //获取到app的类名
         String targetAppClassName = targetAppDes.getClassName();
         try {
+            //利用反射机制得到实例化app
             object = ReflectUtil.getInstance(mNarutoApplicationContext.getApplicationContext().getClassLoader(), targetAppClassName);
         } catch (ClassNotFoundException e) {
             throw new AppLoadException("App ClassNotFoundException: " + e);
@@ -240,8 +257,10 @@ public class ApplicationManagerImpl implements ApplicationManager {
             LogCatLog.w(TAG, sourceAppId + " is not a App");
         }
 
+        //拿到目的app
         MicroApplication app = mAppsMap.get(targetId);
         if (app != null) {
+            //调用销毁方法
             app.destroy(params);
         } else {
             LogCatLog.d(TAG, "can't find App: " + targetId);
@@ -343,17 +362,22 @@ public class ApplicationManagerImpl implements ApplicationManager {
 
     @Override
     public void exit() {
+        //所有应用出栈
         while (!mApps.isEmpty()) {
             MicroApplication microApplication = mApps.pop();
             LogCatLog.v(TAG, "exit() pop appId: " + microApplication.getAppId());
+            //销毁，执行一些内存释放的操作
             microApplication.destroy(null);
         }
+        //应用映射清空
         mAppsMap.clear();
     }
 
     @Override
     public void clear() {
+        //应用栈出栈
         mApps.clear();
+        //应用映射map清空
         mAppsMap.clear();
     }
 
@@ -384,7 +408,7 @@ public class ApplicationManagerImpl implements ApplicationManager {
     @Override
     public MicroApplication getTopRunningApp() {
         if (!mApps.isEmpty()) {
-            return mApps.peek();//获取栈顶元素，但不出栈
+            return mApps.peek();
         }
         return null;
     }
@@ -392,7 +416,7 @@ public class ApplicationManagerImpl implements ApplicationManager {
     @Override
     public void saveState(Editor editor) {
         List<String> appIds = new ArrayList<String>();
-        for (MicroApplication application : mApps) {
+        for (MicroApplication application    : mApps) {
             String appId = application.getAppId();
             appIds.add(appId);
             application.saveState(editor);

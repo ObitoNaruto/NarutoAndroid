@@ -27,6 +27,9 @@ public class PipeLineServiceValueManager {
         init();
     }
 
+    /**
+     * 初始化管道，系统提前定义
+     */
     private void init() {
         //初始化多个管道, 定义多少个管道由业务系统需求决定
         PipeLine pipeLine_1 = new StandardPipeline(mAsyncTaskExecutor.getExecutor());

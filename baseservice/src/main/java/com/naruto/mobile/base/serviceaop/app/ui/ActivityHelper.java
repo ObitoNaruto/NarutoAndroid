@@ -91,7 +91,7 @@ public class ActivityHelper {
 				.getInstance(mActivity);
 		Intent intent = new Intent(MsgCodeConstants.FRAMEWORK_ACTIVITY_RESUME);
 		broadcastManager.sendBroadcast(intent);
-		mMicroApplicationContext.updateActivity(mActivity);
+		mMicroApplicationContext.updateActivity(mActivity);//很重要的一个步骤
 	}
 
 	public void onPause() {
